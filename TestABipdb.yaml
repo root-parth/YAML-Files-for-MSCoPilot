@@ -24,10 +24,10 @@ paths:
           schema:
             type: integer
           required: false
-        responses:
-          "200":
-            description: OK
-            content:
-              application/json:
-                schema:
-                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
