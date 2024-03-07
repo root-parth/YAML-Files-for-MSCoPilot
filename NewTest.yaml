@@ -11,22 +11,22 @@ servers:
 paths:
   /check:
     get:
-      parameters:
-        - name: ipAddress
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: maxAgeInDays
-          in: query
-          schema:
-            type: integer
-            format: int32
-          example: 90
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
+        operationId: ABIPCheckReport
+        parameters:
+          - name: ipAddress
+            in: query
+            required: true
+            schema:
+              type: string
+          - name: maxAgeInDays
+            in: query
+            schema:
+              type: integer
+            example: 90
+        responses:
+          "200":
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
