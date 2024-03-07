@@ -16,10 +16,10 @@ paths:
             parameters:
                 - in: query 
                   name: ip
-                  schema:
                   description: The IP address to check.
-                    type: string
                   required: true
+                  schema:
+                    type: string
                 - in: query
                   name: maxAgeInDays 
                   schema:
