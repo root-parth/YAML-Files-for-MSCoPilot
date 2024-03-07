@@ -6,20 +6,20 @@ info:
   version: "v2"
 
 servers:
-  - url: https://api.abuseipdb.com/api/v2/
+  - url: https://www.abuseipdb.com/
 
 paths:
-  /check/:
+  /check/{ipAddress}:
     get:
         operationId: ABIPCheckReport
         parameters:
-          - name: ipAddress
-            in: query
+          - in: path
+            name: ipAddress
             required: true
             schema:
               type: string
-          - name: maxAgeInDays
-            in: query
+          - in: path
+            name: maxAgeInDays
             schema:
               type: integer
             example: 90
