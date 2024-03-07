@@ -24,18 +24,9 @@ paths:
             format: int32
           example: 90
       responses:
-        '200':
+        "200":
           description: OK
-      security: []
-      headers:
-        Accept:
-          description: The expected content type of the response
-          schema:
-            type: string
-            enum:
-              - application/json
-        Key:
-          description: Your API key
-          schema:
-            type: string
-            format: password
+          content:
+            application/json:
+              schema:
+                type: object
