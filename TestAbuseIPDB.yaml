@@ -25,8 +25,8 @@ paths:
                           default: 90
                         description: Maximum age of reports to consider, in days (default: 90).
                         required: true
-      responses:
-        "200":
-          description: Successful response
-        "400":
-          description: Bad request
+                    responses:
+                             "200":
+                                   description: Successful response
+                             "400":
+                                   description: Bad request
