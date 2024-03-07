@@ -1,0 +1,28 @@
+openapi: 3.0.0
+
+info:
+  title: AbuseIPDB.com
+  description: This plugin will provide the functionality to fetch the details of an IP address using the AbuseIPDB.
+  version: "v2"
+
+servers:
+  - url: https://api.abuseipdb.com/api/v2/
+
+paths:
+  /check:
+    get:
+      parameters:
+        - name: ipAddress
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: maxAgeInDays
+          in: query
+          schema:
+            type: integer
+            format: int32
+          example: 90
+      responses:
+        '200':
+          description: OK
