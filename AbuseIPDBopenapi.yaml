@@ -3,57 +3,57 @@ openapi: 3.0.0
 info:
     title: AbuseIPDB.com
     description: This plugin will provide the functionality to fetch the details of an IP address using the AbuseIPDB.
-    version: ""
+    version: "0.0.1"
 
 servers:
     - url: https://api.abuseipdb.com/
 
 paths:
-    /api/v2/check:
+    /api/v2/check: 
         get: 
             operationId: GetIPReputation
             summary: Get Information about the IP address. 
-            parameters:
+            parameters: 
                 - name: ip
                   in: query
                   description: The IP address to check.
                   required: true
-                  schema:
+                  schema: 
                     type: string
                 - name: maxAgeInDays
                   in: query
                   required: true
-                  schema:
+                  schema: 
                     type: integer
                     default: 90
-      responses:
-        '200':
+      responses: 
+        '200': 
           description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  ipAddress:
+          content: 
+            application/json: 
+              schema: 
+                type: object 
+                properties: 
+                  ipAddress: 
                     type: string
-                  abuseConfidenceScore:
+                  abuseConfidenceScore: 
                     type: integer
-                  country:
+                  country: 
                     type: string
-                  countryCode:
+                  countryCode: 
                     type: string
-                  usageType:
+                  usageType: 
                     type: string
-                  isp:
+                  isp: 
                     type: string
-                  domain:
+                  domain: 
                     type: string
-                  totalReports:
+                  totalReports: 
                     type: integer
-                  numDistinctUsers:
+                  numDistinctUsers: 
                     type: integer
-                  lastReportedAt:
+                  lastReportedAt: 
                     type: string
                     format: date-time
-        '400':
+        '400': 
           description: Bad request
