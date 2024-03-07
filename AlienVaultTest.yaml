@@ -1,0 +1,25 @@
+openapi: 3.0.0
+
+info:
+  title: AlienVault
+  description: This plugin will provide the functionality to fetch the details of an IP address using the AlienVault.
+  version: "1.0.0"
+
+servers:
+  - url: https://otx.alienvault.com/api/
+
+paths:
+  /indicators/IPv4/{ip}/general:
+    get:
+      operationId: GetGenericDetails
+      summary: Get Information about the IP address.
+      parameters:
+        - in: path
+          name: ip
+          schema:
+            type: string
+          required: true
+          description: The IP address to lookup for generic details
+      responses:
+        "200":
+          description: OK
