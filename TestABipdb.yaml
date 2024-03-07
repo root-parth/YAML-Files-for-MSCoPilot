@@ -23,8 +23,7 @@ paths:
           name: maxAgeInDays
           schema:
             type: integer
-          required: true
-          default: 90
+          required: false
       responses:
         "200":
           description: OK
