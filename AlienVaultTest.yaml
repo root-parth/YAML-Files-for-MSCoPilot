@@ -9,13 +9,13 @@ servers:
   - url: https://otx.alienvault.com/api/v1/
 
 paths:
-  /indicators/IPv4/{ip}/general:
+  /indicators/IPv4/{indicator}/general:
     get:
       operationId: GetGenericDetails
       summary: Get Information about the IP address.
       parameters:
         - in: path
-          name: ip
+          name: indicator
           schema:
             type: string
           required: true
