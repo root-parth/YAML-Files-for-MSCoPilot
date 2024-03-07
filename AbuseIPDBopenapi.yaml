@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
     title: AbuseIPDB.com
     description: This plugin will provide the functionality to fetch the details of an IP address using the AbuseIPDB.
-    version: "0.0.1"
+    version: ""
 
 servers:
     - url: https://api.abuseipdb.com/
@@ -14,18 +14,18 @@ paths:
             operationId: GetIPReputation
             summary: Get Information about the IP address. 
             parameters:
-                - in: query 
-                  name: ip
+                - name: ip
+                  in: query
                   description: The IP address to check.
                   required: true
                   schema:
                     type: string
-                - in: query
-                  name: maxAgeInDays 
+                - name: maxAgeInDays
+                  in: query
+                  required: true
                   schema:
                     type: integer
                     default: 90
-                  required: true
       responses:
         '200':
           description: Successful response
@@ -36,34 +36,24 @@ paths:
                 properties:
                   ipAddress:
                     type: string
-                    description: The IP address being checked.
                   abuseConfidenceScore:
                     type: integer
-                    description: The abuse confidence score.
                   country:
                     type: string
-                    description: The country associated with the IP address.
                   countryCode:
                     type: string
-                    description: The country code associated with the IP address.
                   usageType:
                     type: string
-                    description: The usage type of the IP address.
                   isp:
                     type: string
-                    description: The ISP associated with the IP address.
                   domain:
                     type: string
-                    description: The domain associated with the IP address.
                   totalReports:
                     type: integer
-                    description: The total number of reports for the IP address.
                   numDistinctUsers:
                     type: integer
-                    description: The number of distinct users reporting the IP address.
                   lastReportedAt:
                     type: string
                     format: date-time
-                    description: The date and time of the last report for the IP address.
         '400':
           description: Bad request
