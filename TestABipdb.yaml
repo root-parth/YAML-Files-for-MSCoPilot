@@ -14,13 +14,14 @@ paths:
       operationId: GetIPReputation
       summary: Get Information about the IP address.
       parameters:
-        - name: ipAddress
-          in: query
+        - in: query
+          name: ipAddress
           schema:
             type: string
           description: The IP address to check.
           required: true
-        - name: maxAgeInDays
+        - in: query
+          name: maxAgeInDays
           in: query
           schema:
             type: integer
