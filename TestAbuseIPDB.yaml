@@ -4,6 +4,7 @@ info:
   title: AbuseIPDB API
   description: This OpenAPI definition describes the AbuseIPDB API, which allows users to retrieve information about IP addresses reported for abusive behavior.
   version: "v2"
+
 servers:
   - url: https://api.abuseipdb.com/
 
@@ -14,10 +15,10 @@ paths:
       parameters:
         - in: query
           name: ip
-          description: The IP address to check.
-          required: true
           schema:
             type: string
+          description: The IP address to check.
+          required: true
         - in: query
           name: maxAgeInDays
           description: Maximum age of reports to consider, in days (default: 90).
