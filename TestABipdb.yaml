@@ -3,13 +3,13 @@ openapi: 3.0.0
 info:
   title: AbuseIPDB.com
   description: This plugin will provide the functionality to fetch the details of an IP address using the AbuseIPDB.
-  version: "2.0.0"
+  version: "v2"
 
 servers:
-  - url: https://api.abuseipdb.com/
+  - url: https://api.abuseipdb.com/api/v2/
 
 paths:
-  /api/v2/check:
+  /check:
     get:
       operationId: GetIPReputation
       summary: Get Information about the IP address.
@@ -28,10 +28,4 @@ paths:
           required: false
       responses:
         "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-        "400":
-          description: Bad request
+          description: OK
