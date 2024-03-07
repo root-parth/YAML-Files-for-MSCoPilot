@@ -6,16 +6,16 @@ info:
   version: "1.0.0"
 
 servers:
-  - url: https://otx.alienvault.com/api/v1/
+  - url: https://otx.alienvault.com/api/v1/indicators/
 
 paths:
-  /indicators/IPv4/{indicator}/general:
+  /IPv4/{ip}/general:
     get:
       operationId: GetGenericDetails
       summary: Get Information about the IP address.
       parameters:
         - in: path
-          name: indicator
+          name: ip
           schema:
             type: string
           required: true
