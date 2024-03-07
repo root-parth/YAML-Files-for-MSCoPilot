@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
     title: AbuseIPDB.com
     description: This plugin will provide the functionality to fetch the details of an IP address using the AbuseIPDB.
-    version: "0.0.1"
+    version: "v2"
 
 servers:
     - url: https://api.abuseipdb.com/
