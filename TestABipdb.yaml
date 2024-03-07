@@ -27,4 +27,4 @@ paths:
           default: 90
       responses:
         "200":
-          description: Successful response
+          description: OK
