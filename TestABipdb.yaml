@@ -27,11 +27,11 @@ paths:
           description: Maximum age of reports to consider, in days (default: 90).
           required: false
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json:
               schema:
                 type: object
-        '400':
+        "400":
           description: Bad request
