@@ -20,7 +20,11 @@ paths:
             type: string
           required: true
         - in: query
-          maxAgeInDays: 90
+          name: maxAgeInDays
+          schema:
+            type: integer
+          required: true
+          default: 90
       responses:
         "200":
           description: Successful response
