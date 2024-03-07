@@ -24,7 +24,6 @@ paths:
           in: query
           schema:
             type: integer
-            default: 90
           description: Maximum age of reports to consider, in days (default: 90).
           required: false
       responses:
