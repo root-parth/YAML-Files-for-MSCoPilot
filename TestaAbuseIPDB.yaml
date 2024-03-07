@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: AbuseIPDB API
+  description: |
+    This OpenAPI definition describes the AbuseIPDB API, which allows users to retrieve information about IP addresses reported for abusive behavior.
+  version: 1.0.0
+servers:
+  - url: https://api.abuseipdb.com
+    description: Production server
+paths:
+  /check:
+    get:
+      summary: Check IP address reputation
+      description: |
+        Retrieves information about an IP address from AbuseIPDB.
+      parameters:
+        - in: query
+          name: ip
+          description: The IP address to check.
+          required: true
+          schema:
+            type: string
+          example: 123.456.789.0
+        - in: query
+          name: maxAgeInDays
+          description: Maximum age of reports to consider, in days (default: 30).
+          required: false
+          schema:
+            type: integer
+            default: 90
+          example: 90
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ipAddress:
+                    type: string
+                    description: The IP address being checked.
+                  abuseConfidenceScore:
+                    type: integer
+                    description: The abuse confidence score.
+                  country:
+                    type: string
+                    description: The country associated with the IP address.
+                  countryCode:
+                    type: string
+                    description: The country code associated with the IP address.
+                  usageType:
+                    type: string
+                    description: The usage type of the IP address.
+                  isp:
+                    type: string
+                    description: The ISP associated with the IP address.
+                  domain:
+                    type: string
+                    description: The domain associated with the IP address.
+                  totalReports:
+                    type: integer
+                    description: The total number of reports for the IP address.
+                  numDistinctUsers:
+                    type: integer
+                    description: The number of distinct users reporting the IP address.
+                  lastReportedAt:
+                    type: string
+                    format: date-time
+                    description: The date and time of the last report for the IP address.
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Too many requests
+        '500':
+          description: Internal server error
