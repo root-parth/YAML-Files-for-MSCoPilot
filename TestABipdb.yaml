@@ -18,14 +18,12 @@ paths:
           name: ipAddress
           schema:
             type: string
-          description: The IP address to check.
           required: true
         - in: query
           name: maxAgeInDays
           schema:
             type: integer
-          description: Maximum age of reports to consider, in days (default: 90).
-          required: false
+          required: true
       responses:
         "200":
           description: OK
