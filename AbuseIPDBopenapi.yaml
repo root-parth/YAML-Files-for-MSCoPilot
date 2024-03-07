@@ -10,22 +10,24 @@ servers:
 
 paths:
     /api/v2/check: 
-        get: 
+        get:
             operationId: GetIPReputation
-            summary: Get Information about the IP address. 
-            parameters: 
-                - name: ip
+            summary: Get Information about the IP address.
+            parameters:
+                - name: ipAddress
                   in: query
+                  schema:
+                    type: string
                   description: The IP address to check.
                   required: true
-                  schema: 
-                    type: string
+                  
                 - name: maxAgeInDays
                   in: query
-                  required: true
-                  schema: 
+                  schema:
                     type: integer
                     default: 90
+                    required: true
+                    
       responses: 
         '200': 
           description: Successful response
