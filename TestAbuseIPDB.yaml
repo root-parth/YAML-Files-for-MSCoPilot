@@ -10,7 +10,7 @@ servers:
   - url: https://api.abuseipdb.com/
 
 paths:
-  /check:
+  /api/v2/check:
     get:
       summary: Check IP address reputation
       parameters:
