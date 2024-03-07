@@ -23,30 +23,4 @@ paths:
           maxAgeInDays: 90
       responses:
         "200":
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  ipAddress:
-                    type: string
-                  abuseConfidenceScore:
-                    type: integer
-                  country:
-                    type: string
-                  countryCode:
-                    type: string
-                  usageType:
-                    type: string
-                  isp:
-                    type: string
-                  domain:
-                    type: string
-                  totalReports:
-                    type: integer
-                  numDistinctUsers:
-                    type: integer
-                  lastReportedAt:
-                    type: string
-                    format: date-time
           description: Successful response
