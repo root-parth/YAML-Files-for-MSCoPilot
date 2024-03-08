@@ -26,7 +26,7 @@ paths:
       summary: This skill will search for the domain name and get the details about the it if it was involved in any suspicious activities using AlienVault.
       parameters:
         - in: path
-          name: domain
+          name: hostname
           schema:
             type: string
           required: true
