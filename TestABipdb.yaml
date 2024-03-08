@@ -9,7 +9,7 @@ servers:
   - url: https://api.abuseipdb.com/api/v2/
 
 paths:
-  /check:
+  /check/:
     get:
       operationId: GetIPReputation
       summary: Get Information about the IP address.
