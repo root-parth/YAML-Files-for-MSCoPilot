@@ -31,6 +31,17 @@ paths:
             type: string
           required: true
           description: Get the domain to lookup in AlienVault.
+  /file/{file_hash}/{section}:
+    get:
+      operationId: GetFileHashDetails
+      summary: This skill will search for the filehases and get the details about the it if it was involved in any suspicious activities using AlienVault.
+      parameters:
+        - in: path
+          name: file_hash
+          schema:
+            type: string
+          required: true
+          description: Get the filehash to lookup in AlienVault.
       responses:
         "200":
           description: OK
