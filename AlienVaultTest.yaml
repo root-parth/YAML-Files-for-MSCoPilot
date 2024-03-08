@@ -19,7 +19,7 @@ paths:
           schema:
             type: string
           required: true
-          description: This skill will search for the IP address and get the details about the it if it was involved in any suspicious activities using AlienVault.
+          description: Get the IP address to lookup in AlienVault.
   /domain/{domain}/general/:
     get:
       operationId: GetDomainDetails
@@ -30,7 +30,7 @@ paths:
           schema:
             type: string
           required: true
-          description: This skill will search for the domain name and get the details about the it if it was involved in any suspicious activities using AlienVault.
+          description: Get the domain to lookup in AlienVault.
       responses:
         "200":
           description: OK
