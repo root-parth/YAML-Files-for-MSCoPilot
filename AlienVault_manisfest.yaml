@@ -1,0 +1,16 @@
+Descriptor:
+  Name: Check-AlienVault
+  DisplayName: AlienVault
+  Description: Plugin for checking the details of the IP address and domain names on the famous Threat Intelligence platform AlientVault OTX.
+  SupportedAuthTypes:
+    - ApiKey
+  Authorization:
+    Type: APIKey
+    Key: x-apikey
+    Location: Header
+    AuthScheme: ''
+
+SkillGroups:
+  - Format: API
+    Settings:
+      OpenApiSpecUrl: https://raw.githubusercontent.com/root-parth/YAML-Files-for-MSCoPilot/main/AlienVaultTest.yaml
