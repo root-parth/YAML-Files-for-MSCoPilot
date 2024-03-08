@@ -11,15 +11,26 @@ servers:
 paths:
   /IPv4/{ip}/general/:
     get:
-      operationId: GetGenericDetails
-      summary: Get Information about the IP address.
+      operationId: GetGenericDetailsAboutIP
+      summary: This skill will search for the IP address and get the details about the it if it was involved in any suspicious activities using AlienVault.
       parameters:
         - in: path
           name: ip
           schema:
             type: string
           required: true
-          description: The IP address to lookup for generic details
+          description: This skill will search for the IP address and get the details about the it if it was involved in any suspicious activities using AlienVault.
+  /domain/{domain}/general/:
+    get:
+      operationId: GetDomainDetails
+      summary: This skill will search for the domain name and get the details about the it if it was involved in any suspicious activities using AlienVault.
+      parameters:
+        - in: path
+          name: domain
+          schema:
+            type: string
+          required: true
+          description: This skill will search for the domain name and get the details about the it if it was involved in any suspicious activities using AlienVault.
       responses:
         "200":
           description: OK
