@@ -20,7 +20,7 @@ paths:
             type: string
           required: true
           description: Get the IP address to lookup in AlienVault.
-  /domain/{domain}/general/:
+  /hostname/{domain}/general/:
     get:
       operationId: GetDomainDetails
       summary: This skill will search for the domain name and get the details about the it if it was involved in any suspicious activities using AlienVault.
