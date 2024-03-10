@@ -1,32 +1,57 @@
 openapi: 3.0.0
-
 info:
-  title: AbuseIPDB.com
-  description: This plugin will provide the functionality to fetch the details of an IP address using the AbuseIPDB.
+  title: AbuseIPDB API
+  description: API for checking information about IP addresses using AbuseIPDB
   version: "v2"
-
 servers:
-  - url: https://api.abuseipdb.com/api/v2/
-
+  - url: https://api.abuseipdb.com/api/v2
 paths:
-  /check/:
+  /check:
     get:
-      operationId: GetIPReputation
-      summary: Get Information about the IP address.
+      summary: Check IP address information
+      description: |
+        Check information about a given IP address.
       parameters:
-        - in: query
-          name: filter
+        - name: ipAddress
+          in: query
+          description: IP address to check.
+          required: true
+          schema:
+            type: string
+        - name: maxAgeInDays
+          in: query
+          description: Maximum age of reports to consider (in days).
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 365
+      responses:
+        '200':
+          description: Successful response
           content:
             application/json:
               schema:
                 type: object
-                  properties:
-                    ipAddress:
-                      type: string
-                      description: The IP address to look for in abuseipdb.
-                    maxAgeInDays:
-                      type: string
-                      default: 90
-      responses:
-        "200":
-          description: OK
+                properties:
+                  ipAddress:
+                    type: string
+                    description: The IP address being checked.
+                  domain:
+                    type: string
+                    description: The domain which hosts the IP address.
+                  isPublic:
+                    type: boolean
+                    description: Indicates if the IP address is public.
+                  abuseConfidenceScore:
+                    type: integer
+                    description: The confidence score of abuse.
+                  countryCode:
+                    type: string
+                    description: The country code of the IP address.
+                  usageType:
+                    type: string
+                    description: The usage type of the IP address.
+                  isp:
+                    type: string
+                    description: The ISP of the IP address.
