@@ -20,6 +20,28 @@ paths:
             type: string
           required: true
           description: Get the IP address to lookup in AlienVault.
+  /IPv4/{ip}/malware/:
+    get:
+      operationId: GetGenericDetailsAboutIP
+      summary: This skill will search for the IP address and get the details about the it if it was involved in any malware related activities using AlienVault.
+      parameters:
+        - in: path
+          name: ip
+          schema:
+            type: string
+          required: true
+          description: Get the IP address to lookup in AlienVault.
+  /IPv4/{ip}/geo/:
+    get:
+      operationId: GetGenericDetailsAboutIP
+      summary: This skill will search for the IP address and get the details about the it if it was involved in any malware related activities using AlienVault.
+      parameters:
+        - in: path
+          name: ip
+          schema:
+            type: string
+          required: true
+          description: Get the IP address to lookup in AlienVault.
   /hostname/{hostname}/general/:
     get:
       operationId: GetDomainDetails
