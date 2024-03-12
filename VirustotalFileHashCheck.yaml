@@ -1,0 +1,40 @@
+openapi: 3.0.0
+
+info:
+    title: Virus Total Reports
+    description: Virus Total Reports
+    version: "v2"
+
+servers:
+    - url: https://www.virustotal.com/
+    
+paths:
+    /api/v3/files/{id}:
+        get:
+            operationId: VTFileReport
+            summary: Lookup a filehash for information
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The file hash to lookup.
+            responses:
+                "200":
+                    description: OK
+    /api/v3/files/{id}/comments:
+        get:
+            operationId: VTFileCommentsReport
+            summary: Lookup a filehash for communities information
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The file hash comments to lookup.
+            responses:
+                "200":
+                    description: OK
+      
