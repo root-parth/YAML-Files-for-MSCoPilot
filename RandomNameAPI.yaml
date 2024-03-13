@@ -4,7 +4,7 @@ info:
   description: API for checking information about IP addresses using AbuseIPDB
   version: "v2"
 servers:
-  - url: https://api.abuseipdb.com/api/v2
+  - url: https://api.agify.io/
 paths:
   /:
     get:
