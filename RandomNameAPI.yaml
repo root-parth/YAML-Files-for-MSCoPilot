@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  title: AbuseIPDB API
+  description: API for checking information about IP addresses using AbuseIPDB
+  version: "v2"
+servers:
+  - url: https://api.abuseipdb.com/api/v2
+paths:
+  /:
+    get:
+      summary: Check the name and get the predicted age of the name.
+      description: |
+        Check the name and get the predicted age of the name.
+      parameters:
+        - name: name
+          in: query
+          description: The name you want to check.
+          required: true
+          schema:
+            type: string
+      response:
+        "200":
+          description: OK
