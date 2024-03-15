@@ -12,8 +12,8 @@ paths:
       description: |
         Check the name and get the predicted age of the name.
       parameters:
-        - name: name
-          in: query
+        - in: query
+          name: name
           description: The name you want to check.
           required: true
           schema:
