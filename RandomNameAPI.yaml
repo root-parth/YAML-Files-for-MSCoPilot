@@ -8,6 +8,7 @@ servers:
 paths:
   /:
     get:
+      operationId: GetAgeOfName
       summary: Check the name and get the predicted age of the name.
       description: |
         Check the name and get the predicted age of the name.
