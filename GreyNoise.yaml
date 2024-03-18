@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  title: GreyNoise
+  description: API for checking information about IP addresses using GreyNoise.
+  version: "3.0.0"
+servers:
+  - url: https://api.greynoise.io/
+paths:
+  /v3/community/{ip}:
+    get:
+      operationId: GetNoiseInformation
+      summary: Check IP address information.
+      description: |
+        Check information about a given IP address on GreyNoise.
+      parameters:
+        - in: path
+          name: ip
+          description: IP address to check.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
