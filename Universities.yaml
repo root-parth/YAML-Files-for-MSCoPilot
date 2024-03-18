@@ -1,0 +1,30 @@
+openapi: 3.0.0
+info:
+  title: Universitites List
+  description: API for checking information universities located in a country.
+  version: "1.0.0"
+servers:
+  - url: http://universities.hipolabs.com/
+paths:
+  /search:
+    get:
+      operationId: GetUniversities
+      summary: Check the name of the country and get the universities located in the same.
+      description: |
+        Check the name of the country and get the universities located in the same.
+      parameters:
+        - in: query
+          name: country
+          description: The country name you want to check.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
