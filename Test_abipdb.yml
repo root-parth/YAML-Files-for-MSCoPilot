@@ -8,6 +8,7 @@ servers:
 paths:
   /check:
     get:
+      operationId: GetIPReputation
       summary: Check IP address information
       description: |
         Check information about a given IP address.
