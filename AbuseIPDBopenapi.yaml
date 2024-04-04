@@ -1,34 +1,49 @@
 openapi: 3.0.0
-
 info:
-  title: AbuseIPDB.com
-  description: This plugin will provide the functionality to fetch the details of an IP address using the AbuseIPDB.
+  title: AbuseIPDB API
+  description: API for checking information about IP addresses using AbuseIPDB
   version: "2.0.0"
-
 servers:
-  - url: https://api.abuseipdb.com/
-
+  - url: https://api.abuseipdb.com/api/v2/
 paths:
-  /api/v2/check:
+  /check:
     get:
       operationId: GetIPReputation
-      summary: Get Information about the IP address.
+      summary: Check IP address information
+      description: |
+        Check information about a given IP address.
       parameters:
         - name: ipAddress
           in: query
+          description: IP address to check.
+          required: true
           schema:
             type: string
-          description: The IP address to check.
-          required: true
         - name: maxAgeInDays
           in: query
+          description: Maximum age of reports to consider (in days).
+          required: false
           schema:
             type: integer
+            minimum: 90
+            maximum: 100
             default: 90
-          description: Maximum age of reports to consider, in days (default: 90).
-          required: false
+        - name: Key
+          in: header
+          description: Insert the api key of AbuseIPDB.
+          required: true
+          schema:
+            type: string
+            enum:
+              - d8d19d6cfa050ee9b4dae662baa83e0f7787355236d6939e19bb31f5683f0c004cdbb8c9f6ac03ed
+        - name: Accept
+          in: header
+          description: Insert the application content here
+          required: true
+          schema:
+            type: string
+            enum:
+              - application/json
       responses:
         '200':
           description: Successful response
-        '400':
-          description: Bad request
