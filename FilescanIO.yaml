@@ -1,0 +1,25 @@
+openapi: 3.0.0
+
+info:
+    title: FileScan Reports
+    description: FileScan Reports
+    version: "v2"
+
+servers:
+    - url: https://www.filescan.io/
+    
+paths:
+    /api/reputation/hash:
+        get:
+            operationId: FSFileReport
+            summary: Lookup a filehash for information on Filescan.io
+            parameters:
+                - in: query
+                  name: sha256
+                  schema:
+                      type: string
+                  required: true
+                  description: The sha256 filehash to lookup.
+            responses:
+                "200":
+                    description: OK
