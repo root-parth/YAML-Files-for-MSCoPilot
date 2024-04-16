@@ -13,13 +13,17 @@ paths:
         post:
             operationId: HAFileHashReport
             summary: Lookup a filehash for information on HybridAnalysis.
-            parameters:
-                - in: query
-                  name: hash
+            requestBody:
+              description: Defining requestbody.
+              required: true
+              content:
+                application/x-www-form-urlencoded:
                   schema:
-                      type: string
-                  required: true
-                  description: Filehash to lookup on Hybrid analysis.
+                    type: object
+                    properties:
+                      hash:
+                        type: string
+                        description: The hash value to search for
             responses:
-                "200":
-                    description: OK
+              "200":
+                description: OK
