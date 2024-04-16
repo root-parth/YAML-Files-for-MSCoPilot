@@ -1,0 +1,25 @@
+openapi: 3.0.0
+
+info:
+    title: Hybrid-Analysis Reports
+    description: Hybrid-Analysis Reports
+    version: "v2"
+
+servers:
+    - url: https://hybrid-analysis.com/api/v2
+    
+paths:
+    /search/hash:
+        post:
+            operationId: HAFileHashReport
+            summary: Lookup a filehash for information on HybridAnalysis.
+            parameters:
+                - in: query
+                  name: hash
+                  schema:
+                      type: string
+                  required: true
+                  description: Filehash to lookup on Hybrid analysis.
+            responses:
+                "200":
+                    description: OK
