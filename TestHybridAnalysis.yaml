@@ -6,7 +6,7 @@ info:
   version: "v2"
 
 servers:
-  - url: https://hybrid-analysis.com/api/v2
+  - url: https://hybrid-analysis.com/api/v2/
 
 paths:
   /overview/{sha256}:
