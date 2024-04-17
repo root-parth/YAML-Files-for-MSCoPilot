@@ -11,7 +11,7 @@ servers:
 paths:
   /v1/today/phishing/url:
     get:
-      operationId: GetGenericDetailsAboutIP
+      operationId: Rapid - Get Phishing URLs
       summary: This skill will search for get the reports of potential phishing URLs reported on X (previously known as twitter).
       parameters:
         - in: header
