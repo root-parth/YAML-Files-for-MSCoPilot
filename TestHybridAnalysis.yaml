@@ -6,10 +6,10 @@ info:
   version: "v2"
 
 servers:
-  - url: https://hybrid-analysis.com/api/v2/
+  - url: https://hybrid-analysis.com/
 
 paths:
-  /overview/{sha256}:
+  /api/v2/overview/{sha256}:
     get:
       operationId: HAGetFileHashOverview
       summary: This skill will search for the provided sha256 hash value and get the details about the hash if it was involved in any of the malicious activity from the HybridAnalysis.
@@ -23,7 +23,7 @@ paths:
       reponses:
         "200":
           description: OK
-  /overview/{sha256}/summary:
+  /api/v2/overview/{sha256}/summary:
     get:
       operationId: HAGetFileHashSummary
       summary: This skill will search for the provided sha256 hash value and get the summary of the same.
