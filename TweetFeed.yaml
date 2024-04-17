@@ -1,0 +1,27 @@
+openapi: 3.0.0
+
+info:
+  title: RapidAPI - TweetFeeds
+  description: This plugin will provide the functionality to fetch various details from RapidAPI.
+  version: "1.0.0"
+
+servers:
+  - url: https://tweetfeed.p.rapidapi.com/
+
+paths:
+  /v1/today/phishing/url:
+    get:
+      operationId: GetGenericDetailsAboutIP
+      summary: This skill will search for get the reports of potential phishing URLs reported on X (previously known as twitter).
+      parameters:
+        - in: header
+          name: X-RapidAPI-Host
+          schema:
+            type: string
+            enum:
+              - tweetfeed.p.rapidapi.com
+          required: true
+          description: Get the IP address to lookup in AlienVault.
+      responses:
+        "200":
+          description: OK
