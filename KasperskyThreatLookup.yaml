@@ -25,7 +25,7 @@ paths:
           content:
             application/json:
               schema:
-                type: Object
+                type: object
   /api/v1/search/hash:
     get:
       operationId: Kaspersky - Hash Lookup
@@ -45,7 +45,7 @@ paths:
           content:
             application/json:
               schema:
-                type: Object
+                type: object
   /api/v1/search/domain:
     get:
       operationId: Kaspersky - Domain Lookup
@@ -65,7 +65,7 @@ paths:
           content:
             application/json:
               schema:
-                type: Object
+                type: object
   /api/v1/search/url:
     get:
       operationId: Kaspersky - URL Lookup
@@ -85,4 +85,4 @@ paths:
           content:
             application/json:
               schema:
-                type: Object
+                type: object
