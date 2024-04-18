@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://opentip.kaspersky.com/
 paths:
-  /ip:
+  /api/v1/search/ip:
     get:
       operationId: Kaspersky - IP Lookup
       summary: Check IP address information.
@@ -22,11 +22,7 @@ paths:
       responses:
         '200':
           description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-  /hash:
+  /api/v1/search/hash:
     get:
       operationId: Kaspersky - Hash Lookup
       summary: Check hash information on Kaspersky.
@@ -42,11 +38,7 @@ paths:
       responses:
         '200':
           description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-  /domain:
+  /api/v1/search/domain:
     get:
       operationId: Kaspersky - Domain Lookup
       summary: Check domain information on Kaspersky.
@@ -62,11 +54,7 @@ paths:
       responses:
         '200':
           description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-  /url:
+  /api/v1/search/url:
     get:
       operationId: Kaspersky - URL Lookup
       summary: Check domain information on Kaspersky.
@@ -81,9 +69,4 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-  
+          description: Successful response  
