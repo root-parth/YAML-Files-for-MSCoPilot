@@ -19,8 +19,8 @@ paths:
           schema:
             type: string
           required: true
-          description: Get the IP address to lookup in AlienVault.
-      reponses:
+          description: Input sha256 hash vaule to lookup in Hybrid Analysis.
+      responses:
         "200":
           description: OK
   /api/v2/overview/{sha256}/summary:
@@ -33,7 +33,7 @@ paths:
           schema:
             type: string
           required: true
-          description: Get the IP address to lookup in AlienVault.
-      reponses:
+          description: Input sha256 hash vaule to lookup in Hybrid Analysis.
+      responses:
         "200":
           description: OK
