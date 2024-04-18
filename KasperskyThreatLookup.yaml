@@ -1,0 +1,89 @@
+openapi: 3.0.0
+info:
+  title: Kaspersky Threat Lookup
+  description: API for checking information about IP addresses using Kaspersky Threat Lookup.
+  version: "3.0.0"
+servers:
+  - url: https://opentip.kaspersky.com/
+paths:
+  /ip:
+    get:
+      operationId: Kaspersky - IP Lookup
+      summary: Check IP address information.
+      description: |
+        Check information about a given IP address on Kaspersky Threat Lookup.
+      parameters:
+        - in: query
+          name: request
+          description: IP address to lookup on Kaspersky.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+  /hash:
+    get:
+      operationId: Kaspersky - Hash Lookup
+      summary: Check hash information on Kaspersky.
+      description: |
+        Check information about a given IP address on Kaspersky Threat Lookup.
+      parameters:
+        - in: query
+          name: request
+          description: Hash value to lookup on Kaspersky.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+  /domain:
+    get:
+      operationId: Kaspersky - Domain Lookup
+      summary: Check domain information on Kaspersky.
+      description: |
+        Check information about a given domain address on Kaspersky Threat Lookup.
+      parameters:
+        - in: query
+          name: request
+          description: Domain to lookup on Kaspersky.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+  /url:
+    get:
+      operationId: Kaspersky - URL Lookup
+      summary: Check domain information on Kaspersky.
+      description: |
+        Check information about a given URL on Kaspersky Threat Lookup.
+      parameters:
+        - in: query
+          name: request
+          description: URL to lookup on Kaspersky.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+  
