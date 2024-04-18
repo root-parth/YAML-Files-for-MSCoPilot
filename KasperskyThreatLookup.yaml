@@ -21,7 +21,11 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful response
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: Object
   /api/v1/search/hash:
     get:
       operationId: Kaspersky - Hash Lookup
@@ -37,7 +41,11 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful response
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: Object
   /api/v1/search/domain:
     get:
       operationId: Kaspersky - Domain Lookup
@@ -53,7 +61,11 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful response
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: Object
   /api/v1/search/url:
     get:
       operationId: Kaspersky - URL Lookup
@@ -69,4 +81,8 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful response  
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: Object
