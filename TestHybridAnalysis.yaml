@@ -22,7 +22,11 @@ paths:
           description: Input sha256 hash vaule to lookup in Hybrid Analysis.
       responses:
         "200":
-          description: OK
+          description: OK 
+          content:
+            application/json:
+              schema:
+                type: object
   /api/v2/overview/{sha256}/summary:
     get:
       operationId: Hybrid Analysis File Hash Summary
@@ -37,3 +41,7 @@ paths:
       responses:
         "200":
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
