@@ -1,0 +1,37 @@
+openapi: 3.0.0
+
+info:
+  title: Email Data Leak Checker
+  description: This plugin will provide the functionality to fetch the details if a specific email address was a part of any data leak.
+  version: "1.0.0"
+
+servers:
+  - url: https://email-data-leak-checker.p.rapidapi.com/
+
+paths:
+  /emails:
+    get:
+      operationId: Rapid - Get Email Data Leak Information
+      summary: This skill will search for get the reports of a mail address that might be part of any data leaks.
+      parameters:
+        - in: header
+          name: X-RapidAPI-Host
+          schema:
+            type: string
+            enum:
+              - email-data-leak-checker.p.rapidapi.com
+          required: true
+        - in: query
+          name: email
+          schema:
+            type: string
+          required: true 
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
