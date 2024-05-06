@@ -19,7 +19,7 @@ paths:
           schema:
             type: string
             enum: 
-              - tweetfeed.p.rapidapi.com
+              - phishunt_io.p.rapidapi.com
           required: true
       responses:
         "200":
