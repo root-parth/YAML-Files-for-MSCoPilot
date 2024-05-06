@@ -1,0 +1,30 @@
+openapi: 3.0.0
+
+info:
+  title: PhishHunt
+  description: The API plugin fetches the details of the phishing websites.
+  version: "2.0.0"
+
+servers:
+  - url: https://phishunt_io.p.rapidapi.com/suspicious/feed_json
+
+paths:
+  /suspicious/feed_json:
+    get:
+      operationId: PhishHunt
+      summary: Feed with active suspicious phishing websites.
+      parameters:
+        - in: header
+          name: X-RapidAPI-Host
+          schema:
+            type: string
+            enum: 
+              - tweetfeed.p.rapidapi.com
+          required: true
+      responses:
+        "200":
+          description: OK 
+          content:
+            application/json:
+              schema:
+                type: object
