@@ -6,7 +6,7 @@ info:
   version: "2.0.0"
 
 servers:
-  - url: https://phishunt_io.p.rapidapi.com/suspicious/feed_json
+  - url: https://phishunt_io.p.rapidapi.com/
 
 paths:
   /suspicious/feed_json:
