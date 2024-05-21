@@ -56,19 +56,6 @@ paths:
             application/json:
               schema:
                 type: object
-                properties:
-                  message:
-                    type: string
-                    example: Data received successfully
-                  data:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      age:
-                        type: integer
-                      email:
-                        type: string
         '400':
           description: Invalid input
           content:
