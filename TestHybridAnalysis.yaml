@@ -13,7 +13,7 @@ paths:
     post:
       operationId: Hybrid Analysis quick scan URL.
       summary: This skill will get the report of a URL by posting it into the hybrid-analysis engine.
-      description: This endpoint accepts data in the application/x-www-form-urlencoded format.
+      description: This skill will get the report of a URL by posting it into the hybrid-analysis engine.
       requestBody:
         required: true
         content:
@@ -23,7 +23,7 @@ paths:
               properties:
                 scan_type:
                   type: string
-                  description: The name of the user.
+                  description: The type of scan you want to perform.
                   enum: 
                     - all
                     - all_scan
@@ -39,7 +39,7 @@ paths:
                     - scan_scamadviser
                 url:
                   type: string
-                  description: The age of the user.
+                  description: The URL which you want to scan.
                 comment:
                   type: string
                   description: Comment
