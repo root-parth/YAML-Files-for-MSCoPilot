@@ -9,6 +9,75 @@ servers:
   - url: https://hybrid-analysis.com/
 
 paths:
+  /api/v2/quick-scan/url:
+    post:
+      summary: Example POST request
+      description: This endpoint accepts data in the application/x-www-form-urlencoded format.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                scan_type:
+                  type: string
+                  description: The name of the user.
+                  enum: 
+                    - all
+                    - all_scan
+                    - all_lookup
+                    - lookup_ha
+                    - lookup_whitelists
+                    - lookup_whitelists_internal
+                    - lookup_cleandns
+                    - lookup_bforeai
+                    - scan_crowdstrike_ml
+                    - scan_metadefender
+                    - scan_urlscanio
+                    - scan_scamadviser
+                url:
+                  type: string
+                  description: The age of the user.
+                comment:
+                  type: string
+                  description: Comment
+                submit_name:
+                  type: string
+                  description: Optional submission name field that will be used for file type detection and analysis
+              required:
+                - scan_type
+                - url
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Data received successfully
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      age:
+                        type: integer
+                      email:
+                        type: string
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid request parameters
   /api/v2/overview/{sha256}:
     get:
       operationId: Hybrid Analysis File Hash Overview
