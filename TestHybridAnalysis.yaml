@@ -11,7 +11,8 @@ servers:
 paths:
   /api/v2/quick-scan/url:
     post:
-      summary: Example POST request
+      operationId: Hybrid Analysis quick scan URL.
+      summary: This skill will get the report of a URL by posting it into the hybrid-analysis engine.
       description: This endpoint accepts data in the application/x-www-form-urlencoded format.
       requestBody:
         required: true
