@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
   title: Microsft TVM
   description: This plugin will get all the available CVEs in your environment using Microsoft Defender API.
-  version: "v2"
+  version: "1.0.0"
 
 servers:
   - url: https://api.securitycenter.microsoft.com/api/
