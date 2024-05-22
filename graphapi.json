@@ -1,0 +1,66 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Microsoft Graph API Example",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://graph.microsoft.com/v1.0"
+    }
+  ],
+  "paths": {
+    "/me": {
+      "get": {
+        "operationId": "getUserProfile",
+        "summary": "Get current user profile",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserProfile": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "mail": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.microsoftonline.com/76d6f49a-7a26-4433-818f-55a47ae85a0c/oauth2/v2.0/authorize",
+            "tokenUrl": "https://login.microsoftonline.com/76d6f49a-7a26-4433-818f-55a47ae85a0c/oauth2/v2.0/token",
+            "scopes": {
+              "User.Read": "Read user profile"
+            }
+          }
+        }
+      }
+    }
+  }
+}
