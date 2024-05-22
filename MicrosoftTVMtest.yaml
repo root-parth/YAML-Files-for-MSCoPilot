@@ -1,0 +1,22 @@
+openapi: 3.0.0
+
+info:
+  title: Microsft TVM
+  description: This plugin will get all the available CVEs in your environment using Microsoft Defender API.
+  version: "v2"
+
+servers:
+  - url: https://api.securitycenter.microsoft.com/api/
+
+paths:
+  /Vulnerabilities:
+    get:
+      operationId: Get Vulnerabilities
+      summary: This skill will search for the provided sha256 hash value and get the details about the hash if it was involved in any of the malicious activity from the HybridAnalysis.
+      responses:
+        "200":
+          description: OK 
+          content:
+            application/json:
+              schema:
+                type: object
