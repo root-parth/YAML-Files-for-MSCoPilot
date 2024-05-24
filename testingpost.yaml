@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: Example API
+  description: This is an example API for demonstration purposes.
+  version: 1.0.0
+
+servers:
+  - url: https://reqres.in/api/
+    description: Main (production) server
+
+paths:
+  /users:
+    post:
+      summary: Example POST request
+      description: This endpoint accepts data in json format.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the user.
+                  example: Parth
+                job:
+                  type: string
+                  description: The job of the user.
+                  example: Engineer
+              required:
+                - name
+                - job
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid input
