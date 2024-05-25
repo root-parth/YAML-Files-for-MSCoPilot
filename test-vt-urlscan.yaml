@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  title: VirusTotal API
+  description: This API allows you to scan and retrieve reports for URLs using VirusTotal.
+  version: "v2"
+
+
+servers:
+  - url: https://www.virustotal.com/api/v3
+    description: VirusTotal API
+
+paths:
+  /urls:
+    post:
+      summary: Submit a URL for scanning
+      description: This endpoint allows you to submit a URL to VirusTotal for scanning.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: The URL to be scanned by VirusTotal.
+                  example: http://www.example.com
+              required:
+                - url
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
