@@ -48,6 +48,28 @@ paths:
           description: Successful operation
         "400":
           description: Invalid input
+  /search/hash:
+    post:
+      operationId: Hybrid Analysis search the hash 
+      summary: This skill will get the report of a filehash by posting it into the hybrid-analysis engine. (MD5, SHA256 and SHA1 supported)
+      description: This skill will get the report of a filehash by posting it into the hybrid-analysis engine.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                hash:
+                  type: string
+                  description: The filehash which you want to scan.
+              required:
+                - hash
+      responses:
+        "200":
+          description: Successful operation
+        "400":
+          description: Invalid input
   /overview/{sha256}:
     get:
       operationId: Hybrid Analysis File Hash Overview
