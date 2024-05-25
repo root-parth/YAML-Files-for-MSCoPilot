@@ -60,22 +60,6 @@ paths:
             schema:
               type: object
               properties:
-                scan_type:
-                  type: string
-                  description: The type of scan you want to perform.
-                  enum: 
-                    - all
-                    - all_scan
-                    - all_lookup
-                    - lookup_ha
-                    - lookup_whitelists
-                    - lookup_whitelists_internal
-                    - lookup_cleandns
-                    - lookup_bforeai
-                    - scan_crowdstrike_ml
-                    - scan_metadefender
-                    - scan_urlscanio
-                    - scan_scamadviser
                 hash:
                   type: string
                   description: The filehash which you want to scan.
