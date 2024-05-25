@@ -12,6 +12,7 @@ servers:
 paths:
   /urls:
     post:
+      operationId: VT URL Scan
       summary: Submit a URL for scanning
       description: This endpoint allows you to submit a URL to VirusTotal for scanning.
       requestBody:
