@@ -98,11 +98,12 @@ paths:
                     - scan_metadefender
                     - scan_urlscanio
                     - scan_scamadviser
-                hash:
+                file:
                   type: string
-                  description: The filehash which you want to scan.
+                  format: binary
+                  description: The file which you want to scan.
               required:
-                - hash
+                - file
                 - all
       responses:
         "200":
