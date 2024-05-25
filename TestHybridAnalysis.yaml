@@ -11,7 +11,7 @@ servers:
 paths:
   /quick-scan/url:
     post:
-      operationId: Hybrid Analysis - quick scan URL
+      operationId: Hybrid Analysis - Quick scan URL
       summary: This skill will get the report of a URL by posting it into the hybrid-analysis engine.
       description: This skill will get the report of a URL by posting it into the hybrid-analysis engine.
       requestBody:
@@ -50,7 +50,7 @@ paths:
           description: Invalid input
   /search/hash:
     post:
-      operationId: Hybrid Analysis - search the hash 
+      operationId: Hybrid Analysis - Search the hash 
       summary: This skill will get the report of a filehash by posting it into the hybrid-analysis engine. (MD5, SHA256 and SHA1 supported)
       description: This skill will get the report of a filehash by posting it into the hybrid-analysis engine.
       requestBody:
@@ -73,8 +73,8 @@ paths:
   /quick-scan/file:
     post:
       operationId: Hybrid Analysis - Get the file report 
-      summary: This skill will get the report of a filehash by posting it into the hybrid-analysis engine. (MD5, SHA256 and SHA1 supported)
-      description: This skill will get the report of a filehash by posting it into the hybrid-analysis engine.
+      summary: This skill will get the report of a file by uploading it into the hybrid-analysis engine. (MD5, SHA256 and SHA1 supported)
+      description: This skill will get the report of a file by uploading it into the hybrid-analysis engine. (MD5, SHA256 and SHA1 supported)
       requestBody:
         required: true
         content:
