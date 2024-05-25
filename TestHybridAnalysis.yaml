@@ -11,7 +11,7 @@ servers:
 paths:
   /quick-scan/url:
     post:
-      operationId: Hybrid Analysis quick scan URL
+      operationId: Hybrid Analysis - quick scan URL
       summary: This skill will get the report of a URL by posting it into the hybrid-analysis engine.
       description: This skill will get the report of a URL by posting it into the hybrid-analysis engine.
       requestBody:
@@ -50,7 +50,7 @@ paths:
           description: Invalid input
   /search/hash:
     post:
-      operationId: Hybrid Analysis search the hash 
+      operationId: Hybrid Analysis - search the hash 
       summary: This skill will get the report of a filehash by posting it into the hybrid-analysis engine. (MD5, SHA256 and SHA1 supported)
       description: This skill will get the report of a filehash by posting it into the hybrid-analysis engine.
       requestBody:
@@ -72,7 +72,7 @@ paths:
           description: Invalid input
   /quick-scan/file:
     post:
-      operationId: Hybrid Analysis search the hash 
+      operationId: Hybrid Analysis - Get the file report 
       summary: This skill will get the report of a filehash by posting it into the hybrid-analysis engine. (MD5, SHA256 and SHA1 supported)
       description: This skill will get the report of a filehash by posting it into the hybrid-analysis engine.
       requestBody:
@@ -111,7 +111,7 @@ paths:
           description: Invalid input
   /overview/{sha256}:
     get:
-      operationId: Hybrid Analysis File Hash Overview
+      operationId: Hybrid Analysis - File Hash Overview
       summary: This skill will search for the provided sha256 hash value and get the details about the hash if it was involved in any of the malicious activity from the HybridAnalysis.
       parameters:
         - in: path
@@ -129,7 +129,7 @@ paths:
                 type: object
   /overview/{sha256}/summary:
     get:
-      operationId: Hybrid Analysis File Hash Summary
+      operationId: Hybrid Analysis - File Hash Summary
       summary: This skill will search for the provided sha256 hash value and get the summary of the same.
       parameters:
         - in: path
