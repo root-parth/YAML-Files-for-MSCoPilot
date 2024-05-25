@@ -12,7 +12,7 @@ servers:
 paths:
   /urls:
     post:
-      operationId: VT URL Scan
+      operationId: VT POST URL for Scan
       summary: Submit a URL for scanning
       description: This endpoint allows you to submit a URL to VirusTotal for scanning.
       requestBody:
@@ -35,3 +35,17 @@ paths:
             application/json:
               schema:
                 type: object
+  /analyses/{id}:
+        get:
+            operationId: VT Get URL scan
+            summary: Lookup a URL's result after posting it for scan.
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The file hash comments to lookup.
+            responses:
+                "200":
+                    description: OK
