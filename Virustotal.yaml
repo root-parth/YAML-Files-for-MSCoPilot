@@ -64,9 +64,9 @@ paths:
                     type: object
                     properties:
                         url:
-                        type: string
-                        description: The URL to be scanned by VirusTotal.
-                        example: http://www.example.com
+                            type: string
+                            description: The URL to be scanned by VirusTotal.
+                            example: http://www.example.com
                     required:
                         - url
             responses:
