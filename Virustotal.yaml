@@ -39,7 +39,7 @@ paths:
                     description: OK
     /api/v3/analyses/{id}:
         get:
-            operationId: Virus Total - Get Url Analysis
+            operationId: Virus Total - Get Url Analysis from the id
             summary: Get the Url analysis result
             parameters:
                 - in: path
@@ -53,7 +53,7 @@ paths:
                     description: OK
     /api/v3/urls:
         post:
-            operationId: Virus Total - POST URL for Scan
+            operationId: Virus Total - URL for Scan
             summary: Submit a URL for scanning
             description: This endpoint allows you to submit a URL to VirusTotal for scanning.
             requestBody:
