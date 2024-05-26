@@ -54,6 +54,7 @@ paths:
     /api/v3/urls:
         post:
             summary: Submit a URL for scanning
+            operationId: Virus Total - Get URL report (POST)
             description: This endpoint allows you to submit a URL to VirusTotal for scanning.
             requestBody:
                 required: true
