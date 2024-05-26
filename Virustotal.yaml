@@ -56,6 +56,7 @@ paths:
             summary: Submit a URL for scanning
             description: This endpoint allows you to submit a URL to VirusTotal for scanning.
             requestBody:
+                required: true
                 content:
                     application/x-www-form-urlencoded:
                         schema:
@@ -67,13 +68,13 @@ paths:
                                     example: http://www.example.com
                             required:
                                 - url
-            responses:
-                '200':
-                description: Successful operation
-                content:
-                    application/json:
-                    schema:
-                        type: object
+        responses:
+            '200':
+            description: Successful operation
+            content:
+                application/json:
+                schema:
+                    type: object
     /api/v3/files/{id}:
         get:
             operationId: Virus Total - File Report
