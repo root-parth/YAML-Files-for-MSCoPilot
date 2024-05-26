@@ -53,7 +53,6 @@ paths:
                     description: OK
     /api/v3/urls:
         post:
-            operationId: Virus Total - URL for Scan
             summary: Submit a URL for scanning
             description: This endpoint allows you to submit a URL to VirusTotal for scanning.
             requestBody:
@@ -61,14 +60,14 @@ paths:
                 content:
                 application/x-www-form-urlencoded:
                     schema:
-                    type: object
-                    properties:
-                        url:
+                        type: object
+                        properties:
+                            url:
                             type: string
                             description: The URL to be scanned by VirusTotal.
                             example: http://www.example.com
-                    required:
-                        - url
+                        required:
+                            - url
             responses:
                 '200':
                 description: Successful operation
