@@ -1,0 +1,106 @@
+openapi: 3.0.0
+
+info:
+    title: Virus Total Reports
+    description: Virus Total Reports
+    version: "v2"
+
+servers:
+    - url: https://www.virustotal.com/
+
+paths:
+    /api/v3/domains/{domain}:
+        get:
+            operationId: Virus Total - Domain Report
+            summary: Lookup domain information
+            parameters:
+                - in: path
+                  name: domain
+                  schema:
+                      type: string
+                  required: true
+                  description: The domain address to lookup
+            responses:
+                "200":
+                    description: OK
+    /api/v3/ip_addresses/{ip}:
+        get:
+            operationId: Virus Total - IPReport
+            summary: Lookup IP information
+            parameters:
+                - in: path
+                  name: ip
+                  schema:
+                      type: string
+                  required: true
+                  description: The IP address to lookup
+            responses:
+                "200":
+                    description: OK
+    /api/v3/analyses/{id}:
+        get:
+            operationId: Virus Total - Get Url Analysis
+            summary: Get the Url analysis result
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: Get the Url analysis result
+            responses:
+                "200":
+                    description: OK
+    /api/v3/urls:
+        post:
+            operationId: Virus Total - POST URL for Scan
+            summary: Submit a URL for scanning
+            description: This endpoint allows you to submit a URL to VirusTotal for scanning.
+            requestBody:
+                required: true
+                content:
+                application/x-www-form-urlencoded:
+                    schema:
+                    type: object
+                    properties:
+                        url:
+                        type: string
+                        description: The URL to be scanned by VirusTotal.
+                        example: http://www.example.com
+                    required:
+                        - url
+            responses:
+                '200':
+                description: Successful operation
+                content:
+                    application/json:
+                    schema:
+                        type: object
+    /api/v3/files/{id}:
+        get:
+            operationId: Virus Total - File Report
+            summary: Lookup a filehash for information
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The file hash to lookup.
+            responses:
+                "200":
+                    description: OK
+    /api/v3/files/{id}/comments:
+        get:
+            operationId: Virus Total - File Comments Report
+            summary: Lookup a filehash for communities information
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The file hash comments to lookup.
+            responses:
+                "200":
+                    description: OK
