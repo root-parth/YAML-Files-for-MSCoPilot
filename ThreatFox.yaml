@@ -23,9 +23,10 @@ paths:
               properties:
                 query:
                   type: string
-                  description: get_iocs 
+                  description: get_iocs
                   enum:
                     - get_iocs
+                  default: get_iocs
                 days:
                   type: integer
                   description: Mention Days over here. Make sure it is between 1 to 7.
@@ -41,6 +42,59 @@ paths:
               required:
                 - query
                 - days
+      responses:
+        '200':
+          description: Successful operation
+  /api/v1/:
+    post:
+      summary: Search for file hash
+      operationId: ThreatFox - Search for IOCs by file hash
+      description: This endpoint enables the user to search file hash.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  default: search_hash
+                  description: search_hash
+                  enum:
+                    - search_hash
+                hash:
+                  type: string
+                  description: Input the hash value which you want to search.
+              required:
+                - query
+                - hash
+      responses:
+        '200':
+          description: Successful operation
+  /api/v1/:
+    post:
+      summary: Search an IOC
+      operationId: ThreatFox - Search an IOC
+      description: This endpoint enables the user to search IOCs.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: search_ioc
+                  enum:
+                    - search_ioc
+                search_term:
+                  type: string
+                  description: Input the hash value which you want to search.
+              required:
+                - query
+                - search_term
       responses:
         '200':
           description: Successful operation
