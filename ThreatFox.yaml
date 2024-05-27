@@ -1,0 +1,40 @@
+openapi: 3.0.0
+
+info:
+  title: ThreatFox
+  description: ThreatFox is a free platform from abuse.ch with the goal of sharing indicators of compromise (IOCs) associated with malware with the infosec community, AV vendors, and threat intelligence providers.
+  version: "v1"
+
+servers:
+  - url: https://threatfox-api.abuse.ch/
+
+paths:
+  /api/v1/:
+    post:
+      summary: Get Recent IOCs
+      operationId: ThreatFox_GetRecentIOCs
+      description: This endpoint enables the user to gather all the Threat Intelligence feed from the ThreatFox platform.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  enum:
+                    - get_iocs
+                days:
+                  type: integer
+                  example: 10
+              required:
+                - query
+                - days
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
