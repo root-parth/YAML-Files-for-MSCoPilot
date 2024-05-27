@@ -15,7 +15,6 @@ paths:
       operationId: ThreatFox_GetRecentIOCs
       description: This endpoint enables the user to gather all the Threat Intelligence feed from the ThreatFox platform.
       requestBody:
-        required: true
         content:
           application/json:
             schema:
