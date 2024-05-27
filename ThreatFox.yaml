@@ -12,7 +12,7 @@ paths:
   /api/v1/:
     post:
       summary: Get Recent IOCs
-      operationId: ThreatFox_GetRecentIOCs
+      operationId: ThreatFox - Get Recent IOCs
       description: This endpoint enables the user to gather all the Threat Intelligence feed from the ThreatFox platform.
       requestBody:
         content:
@@ -22,11 +22,13 @@ paths:
               properties:
                 query:
                   type: string
+                  example: get_iocs
                   enum:
                     - get_iocs
                 days:
                   type: integer
                   example: 10
+                  description: Enter the number of days. (i.e. 10)
               required:
                 - query
                 - days
