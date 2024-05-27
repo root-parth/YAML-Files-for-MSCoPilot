@@ -12,9 +12,10 @@ paths:
   /api/v1/:
     post:
       summary: Get Recent IOCs
-      operationId: ThreatFox - Get Recent IOCs
+      operationId: ThreatFox_GetRecentIOCs
       description: This endpoint enables the user to gather all the Threat Intelligence feed from the ThreatFox platform.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -22,20 +23,80 @@ paths:
               properties:
                 query:
                   type: string
-                  example: get_iocs
                   enum:
                     - get_iocs
                 days:
                   type: integer
                   example: 10
-                  description: Enter the number of days. (i.e. 10)
               required:
                 - query
                 - days
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  query_status:
+                    type: string
+                    example: ok
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: "1275911"
+                        ioc:
+                          type: string
+                          example: jscodecss.com
+                        threat_type:
+                          type: string
+                          example: botnet_cc
+                        threat_type_desc:
+                          type: string
+                          example: Indicator that identifies a botnet command&control server (C&C)
+                        ioc_type:
+                          type: string
+                          example: domain
+                        ioc_type_desc:
+                          type: string
+                          example: Domain that is used for botnet Command&control (C&C)
+                        malware:
+                          type: string
+                          example: unknown
+                        malware_printable:
+                          type: string
+                          example: Unknown malware
+                        malware_alias:
+                          type: string
+                          nullable: true
+                          example: null
+                        malware_malpedia:
+                          type: string
+                          example: https://malpedia.caad.fkie.fraunhofer.de/details/unknown
+                        confidence_level:
+                          type: integer
+                          example: 100
+                        first_seen:
+                          type: string
+                          format: date-time
+                          example: "2024-05-27 03:49:25 UTC"
+                        last_seen:
+                          type: string
+                          nullable: true
+                          example: null
+                        reference:
+                          type: string
+                          example: ""
+                        reporter:
+                          type: string
+                          example: Gi7w0rm
+                        tags:
+                          type: array
+                          items:
+                            type: string
+                            example: APT
