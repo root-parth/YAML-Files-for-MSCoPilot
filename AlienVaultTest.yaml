@@ -79,10 +79,10 @@ paths:
       responses:
         "200":
           description: OK
-  /indicators/url/{url}/malware:
+  /indicators/url/{url}/general/:
     get:
       operationId: AlienVault - Get URL Details
-      summary: This skill will search for the filehases and get the details about the it if it was involved in any suspicious activities using AlienVault.
+      summary: This skill will search for the URL and get the general details about the it if it was involved in any suspicious activities using AlienVault.
       parameters:
         - in: path
           name: url
