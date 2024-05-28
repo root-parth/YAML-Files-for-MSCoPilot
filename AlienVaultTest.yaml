@@ -79,7 +79,7 @@ paths:
       responses:
         "200":
           description: OK
-  /url/{url}/{section}/:
+  /url/{url}/general:
     get:
       operationId: AlienVault - Get URL Details
       summary: This skill will search for the URL and get the general details about the it if it was involved in any suspicious activities using AlienVault.
@@ -90,19 +90,6 @@ paths:
             type: string
           required: true
           description: Enter the URL to lookup in AlienVault.
-        - in: path
-          name: section
-          schema:
-            type: string
-            default: malware
-            enum: 
-              - general
-              - reputation
-              - geo
-              - malware
-              - url_list
-              - passive_dns
-          required: false
       responses:
         "200":
           description: OK
