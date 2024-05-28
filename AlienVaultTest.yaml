@@ -11,7 +11,7 @@ servers:
 paths:
   /IPv4/{ip}/general/:
     get:
-      operationId: GetGenericDetailsAboutIP
+      operationId: AlienVault - Get Generic Details About IP
       summary: This skill will search for the IP address and get the details about the it if it was involved in any suspicious activities using AlienVault.
       parameters:
         - in: path
@@ -20,9 +20,12 @@ paths:
             type: string
           required: true
           description: Get the IP address to lookup in AlienVault.
+      responses:
+        "200":
+          description: OK
   /IPv4/{ip}/malware/:
     get:
-      operationId: GetMalwareDetailsAboutIP
+      operationId: AlienVault - Get Malware Details About IP
       summary: This skill will search for the IP address and get the details about the it if it was involved in any malware related activities using AlienVault.
       parameters:
         - in: path
@@ -31,9 +34,12 @@ paths:
             type: string
           required: true
           description: Get the IP address to lookup in AlienVault.
+      responses:
+        "200":
+          description: OK
   /IPv4/{ip}/geo/:
     get:
-      operationId: GetGeoDetailsAboutIP
+      operationId: AlienVault - Get Geo Details About IP
       summary: This skill will search for the IP address and get the details about the it if it was involved in any malware related activities using AlienVault.
       parameters:
         - in: path
@@ -42,9 +48,12 @@ paths:
             type: string
           required: true
           description: Get the IP address to lookup in AlienVault.
+      responses:
+        "200":
+          description: OK
   /hostname/{hostname}/general/:
     get:
-      operationId: GetDomainDetails
+      operationId: AlienVault - Get Domain Details
       summary: This skill will search for the domain name and get the details about the it if it was involved in any suspicious activities using AlienVault.
       parameters:
         - in: path
@@ -52,10 +61,13 @@ paths:
           schema:
             type: string
           required: true
-          description: Get the domain to lookup in AlienVault.
+          description: Enter the domain to lookup in AlienVault.
+      responses:
+        "200":
+          description: OK
   /file/{file_hash}/general/:
     get:
-      operationId: GetFileHashDetails
+      operationId: AlienVault - Get File Hash Details
       summary: This skill will search for the filehases and get the details about the it if it was involved in any suspicious activities using AlienVault.
       parameters:
         - in: path
@@ -63,7 +75,35 @@ paths:
           schema:
             type: string
           required: true
-          description: Get the filehash to lookup in AlienVault.
+          description: Enter the filehash to lookup in AlienVault.
+      responses:
+        "200":
+          description: OK
+  /indicators/url/{url}/{section}:
+    get:
+      operationId: AlienVault - Get URL Details
+      summary: This skill will search for the filehases and get the details about the it if it was involved in any suspicious activities using AlienVault.
+      parameters:
+        - in: path
+          name: url
+          schema:
+            type: string
+          required: true
+          description: Enter the filehash to lookup in AlienVault.
+        - in: path
+          name: section
+          schema:
+            type: string
+            default: malware
+            enum: 
+              - one of general
+              - reputation
+              - geo
+              - malware
+              - url_list
+              - passive_dns
+          required: true
+          description: Enter the URL to lookup in AlienVault.
       responses:
         "200":
           description: OK
