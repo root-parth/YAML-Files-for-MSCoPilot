@@ -89,7 +89,7 @@ paths:
           schema:
             type: string
           required: true
-          description: Enter the filehash to lookup in AlienVault.
+          description: Enter the URL to lookup in AlienVault.
         - in: path
           name: section
           schema:
@@ -103,7 +103,7 @@ paths:
               - url_list
               - passive_dns
           required: true
-          description: Enter the URL to lookup in AlienVault.
+          description: Enter the section to lookup in AlienVault. (default is malware)
       responses:
         "200":
           description: OK
