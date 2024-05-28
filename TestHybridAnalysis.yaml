@@ -164,3 +164,14 @@ paths:
             application/json:
               schema:
                 type: object
+  /feed/latest:
+    get:
+      operationId: Hybrid Analysis - Get the feeds
+      summary: This skill will get threat intelligence feed.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
