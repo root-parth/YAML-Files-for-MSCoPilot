@@ -146,3 +146,21 @@ paths:
             application/json:
               schema:
                 type: object
+  /quick-scan/{id}:
+    get:
+      operationId: Hybrid Analysis - Get the scan result by ID
+      summary: This skill will get the result of a scan by using the ID field.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Input sha256 hash vaule to lookup in Hybrid Analysis.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
