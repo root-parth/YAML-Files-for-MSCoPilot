@@ -25,7 +25,7 @@ paths:
                   schema:
                       type: string
                       default: subdomain-scan1.p.rapidapi.com
-                  required: true
+                  required: false
                   description: Endpoint of the api. (No need to enter anything in this box)
             responses:
                 "200":
