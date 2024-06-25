@@ -1,3 +1,7 @@
+Descriptor:
+  Name: GetGroupCreationDetails
+  DisplayName: Group Creation - Entra ID
+  Description: Looks for Groups Created in a given timeperiod.
 SkillGroups:
   - Format: KQL
     Skills:
@@ -23,5 +27,5 @@ SkillGroups:
             | extend TargetUser = tostring(TargetResources[0].userPrincipalName)
             | extend InitiatedBy_ = iff(isempty(tostring(parse_json(tostring(InitiatedBy.user)).userPrincipalName)), tostring(parse_json(tostring(InitiatedBy.app)).displayName), tostring(parse_json(tostring(InitiatedBy.user)).userPrincipalName))
             | where isnotempty(TargetUser)
-            | extend IpAddress = tostring(parse_json(tostring(InitiatedBy.user)).ipAddress)
-            | project TimeGenerated, ActivityDisplayName,GroupName, TargetUser, InitiatedBy_, IpAddress
+            | extend ipAddress_ = tostring(parse_json(tostring(InitiatedBy.user)).ipAddress)
+            | project TimeGenerated, ActivityDisplayName,GroupName, TargetUser, InitiatedBy_, ipAddress_
