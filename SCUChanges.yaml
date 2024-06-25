@@ -1,0 +1,49 @@
+Descriptor:
+  Name: GetOnboardedDevices - Defender
+  DisplayName: GetOnboardedDevices - Defender
+  Description: Skills to query Onboarded devices to Microsoft Defender for Endpoint
+
+SkillGroups:
+  - Format: KQL
+    Skills:
+      - Name: GetOnboardedDevices
+        DisplayName: GetOnboardedDevices
+        Description: Fetches the Devices which are Onboarded to the Microsoft Defender for Endpoint or EDR.
+        Inputs:
+          - Name: startdate
+            Description: The start date for the query.
+            Required: true
+          - Name: enddate
+            Description: The end date for the query.
+            Required: true
+        Settings:
+          Target: Defender
+          Template: |-
+            let startdate = todatetime({{startdate}});
+            let enddate = todatetime({{enddate}});
+            DeviceInfo
+            | where Timestamp between (startdate .. enddate)
+            | where OnboardingStatus == "Onboarded"
+            | summarize arg_max(Timestamp, *) by DeviceName
+            | project Timestamp, DeviceName,PublicIP, OnboardingStatus, ExposureLevel, OSArchitecture, OSPlatform
+
+
+Descriptor:
+  Name: SCUChanges
+  DisplayName: SCU Changes
+  Description: Looks for SCU changes in the last 3 days
+
+SkillGroups:
+  - Format: KQL
+    Skills:
+      - Name: SCUChanges
+        DisplayName: SCU Changes
+        Description: Looks for SCU changes in the last 3 days
+        Settings:
+          Target: Sentinel
+          TenantId: 76d6f49a-7a26-4433-818f-55a47ae85a0c
+          SubscriptionId: 3affbdc3-38f2-4efb-a0bb-0ac9280ba152
+          ResourceGroupName: sentinel-soc
+          WorkspaceName: PCS-MSSP-Sentinel
+          Template: |-
+            AzureActivity | where TimeGenerated >= ago(3d) | where ResourceProviderValue == "MICROSOFT.SECURITYCOPILOT" | extend resourceName = tostring(parse_json(Properties).resource) | extend resourceGroupName = tostring(parse_json(Properties).resourceGroup) | extend resourceActivity = tostring(parse_json(Properties).message) | where resourceActivity == "Microsoft.SecurityCopilot/capacities/write"| distinct Caller, CallerIpAddress, resourceName, resourceGroupName, resourceActivity
