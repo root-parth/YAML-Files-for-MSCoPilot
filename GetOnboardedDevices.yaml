@@ -10,8 +10,11 @@ SkillGroups:
         DisplayName: GetOnboardedDevices
         Description: Fetches the Devices which are Onboarded to the Microsoft Defender for Endpoint or EDR.
         Inputs:
-          - Name: startdate, enddate
-            Description: The start and end date.
+          - Name: startdate
+            Description: The start date for the query.
+            Required: true
+          - Name: enddate
+            Description: The end date for the query.
             Required: true
         Settings:
           Target: Defender
