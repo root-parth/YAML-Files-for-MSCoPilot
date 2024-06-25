@@ -1,0 +1,31 @@
+Descriptor:
+  Name: GetMembersAddedToaGroup
+  DisplayName: Get Members Added To a Group - Entra ID
+  Description: Looks for users added to a group in a given timeperiod.
+SkillGroups:
+  - Format: KQL
+    Skills:
+      - Name: GetMembersAddedToaGroup
+        DisplayName: Get Members Added To a Group - Entra ID
+        Description: Looks for users added to a group in a given timeperiod.
+        Inputs:
+          - Name: timeperiod
+            Description: The timeperiod you want to run this query for. (e.g. 3d)
+            Required: true
+        Settings:
+          Target: Sentinel
+          TenantId: 76d6f49a-7a26-4433-818f-55a47ae85a0c
+          SubscriptionId: 3affbdc3-38f2-4efb-a0bb-0ac9280ba152
+          ResourceGroupName: sentinel-soc
+          WorkspaceName: PCS-MSSP-Sentinel
+          Template: |-
+            let timeperiod = {{timeperiod}};
+            AuditLogs
+            | where TimeGenerated >= ago(timeperiod)
+            | where ActivityDisplayName == "Add member to group"
+            | extend GroupName = tostring(parse_json(tostring(parse_json(tostring(TargetResources[0].modifiedProperties))[1].newValue)))
+            | extend TargetUser = tostring(TargetResources[0].userPrincipalName)
+            | extend InitiatedBy_ = iff(isempty(tostring(parse_json(tostring(InitiatedBy.user)).userPrincipalName)), tostring(parse_json(tostring(InitiatedBy.app)).displayName), tostring(parse_json(tostring(InitiatedBy.user)).userPrincipalName))
+            | where isnotempty(TargetUser)
+            | extend ipAddress_ = tostring(parse_json(tostring(InitiatedBy.user)).ipAddress)
+            | summarize StartTime = min(TimeGenerated), EndTime = max(TimeGenerated), TotalUsersAdded = dcount(TargetUser), TargetUsers=make_set(TargetUser), InitiatedByUsers = make_set(TargetUser) by GroupName
