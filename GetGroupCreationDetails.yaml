@@ -1,13 +1,13 @@
 Descriptor:
-  Name: GetGroupCreationDetails
-  DisplayName: Group Creation - Entra ID
-  Description: Looks for Groups Created in a given timeperiod.
+  Name: GetMembersAddedToaGroup
+  DisplayName: Get Members Added To a Group - Entra ID
+  Description: Looks for users added to a group in a given timeperiod.
 SkillGroups:
   - Format: KQL
     Skills:
-      - Name: GetGroupCreationDetails
-        DisplayName: Group Creation - Entra ID
-        Description: Looks for Groups Created in a given timeperiod.
+      - Name: GetMembersAddedToaGroup
+        DisplayName: Get Members Added To a Group - Entra ID
+        Description: Looks for users added to a group in a given timeperiod.
         Inputs:
           - Name: timeperiod
             Description: The timeperiod you want to run this query for. (e.g. 3d)
@@ -28,4 +28,4 @@ SkillGroups:
             | extend InitiatedBy_ = iff(isempty(tostring(parse_json(tostring(InitiatedBy.user)).userPrincipalName)), tostring(parse_json(tostring(InitiatedBy.app)).displayName), tostring(parse_json(tostring(InitiatedBy.user)).userPrincipalName))
             | where isnotempty(TargetUser)
             | extend ipAddress_ = tostring(parse_json(tostring(InitiatedBy.user)).ipAddress)
-            | project TimeGenerated, ActivityDisplayName,GroupName, TargetUser, InitiatedBy_, ipAddress_
+            | summarize StartTime = min(TimeGenerated), EndTime = max(TimeGenerated), TotalUsersAdded = dcount(TargetUser), TargetUsers=make_set(TargetUser), InitiatedByUsers = make_set(TargetUser) by GroupName
