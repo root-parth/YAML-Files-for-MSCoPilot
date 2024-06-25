@@ -1,34 +1,4 @@
 Descriptor:
-  Name: GetOnboardedDevices - Defender
-  DisplayName: GetOnboardedDevices - Defender
-  Description: Skills to query Onboarded devices to Microsoft Defender for Endpoint
-
-SkillGroups:
-  - Format: KQL
-    Skills:
-      - Name: GetOnboardedDevices
-        DisplayName: GetOnboardedDevices
-        Description: Fetches the Devices which are Onboarded to the Microsoft Defender for Endpoint or EDR.
-        Inputs:
-          - Name: startdate
-            Description: The start date for the query.
-            Required: true
-          - Name: enddate
-            Description: The end date for the query.
-            Required: true
-        Settings:
-          Target: Defender
-          Template: |-
-            let startdate = todatetime({{startdate}});
-            let enddate = todatetime({{enddate}});
-            DeviceInfo
-            | where Timestamp between (startdate .. enddate)
-            | where OnboardingStatus == "Onboarded"
-            | summarize arg_max(Timestamp, *) by DeviceName
-            | project Timestamp, DeviceName,PublicIP, OnboardingStatus, ExposureLevel, OSArchitecture, OSPlatform
-
-
-Descriptor:
   Name: SCUChanges
   DisplayName: SCU Changes
   Description: Looks for SCU changes in the last 3 days
