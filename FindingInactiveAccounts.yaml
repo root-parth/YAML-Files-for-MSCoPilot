@@ -1,0 +1,31 @@
+Descriptor:
+  Name: Find Inactive Accounts
+  DisplayName: Find Inactive Accounts - Entra ID
+  Description: Looks for users who have not logged in from certain time period.
+SkillGroups:
+  - Format: KQL
+    Skills:
+      - Name: Find Inactive Accounts
+        DisplayName: Find Inactive Accounts - Entra ID
+        Description: Looks for users who have not logged in from certain time period.
+        Inputs:
+          - Name: lookupdataperiod
+            Description: The lookup time period you want to define. This should be a larger data period e.g. 90d, 30d.
+            Required: 
+          - Name: LastSignInThreshold
+            Description: The last signin time threshold. This time period should be a shorter one e.g. 7d, 15d.
+            Required: true
+        Settings:
+          Target: Sentinel
+          TenantId: 76d6f49a-7a26-4433-818f-55a47ae85a0c
+          SubscriptionId: 3affbdc3-38f2-4efb-a0bb-0ac9280ba152
+          ResourceGroupName: sentinel-soc
+          WorkspaceName: PCS-MSSP-Sentinel
+          Template: |-
+            let lookupdataperiod = {{lookupdataperiod}};
+            let LastSignInThreshold = {{LastSignInThreshold}};
+            SigninLogs
+            | where TimeGenerated > ago(lookupdataperiod)
+            | where ResultType == 0
+            | summarize LastSignIntime = max(TimeGenerated) by UserPrincipalName, UserDisplayName
+            | where LastSignIntime < ago(LastSignInThreshold)
