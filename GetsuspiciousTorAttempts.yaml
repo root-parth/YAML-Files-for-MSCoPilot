@@ -1,0 +1,21 @@
+Descriptor:
+  Name: Get Suspicious TOR Attempts - Defender
+  DisplayName: Get Suspicious TOR Attempts - Defender
+  Description: Skills to query Suspicious TOR Attempts on Microsoft Portals.
+SkillGroups:
+  - Format: KQL
+    Skills:
+      - Name: Get Suspicious TOR Attempts - Defender
+        DisplayName: Get Suspicious TOR Attempts - Defender
+        Description: Skills to query Suspicious TOR Attempts on Microsoft Portals.
+        Inputs:
+          - Name: timeperiod
+            Description: The time period you want to query for. (e.g. 3d)
+            Required: true
+        Settings:
+          Target: Defender
+          Template: |-
+            let timeperiod = {{timeperiod}};
+            AADSignInEventsBeta
+            | where Timestamp > ago(timeperiod)
+            | where RiskEventTypes has '103'
