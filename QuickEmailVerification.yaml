@@ -1,0 +1,25 @@
+openapi: 3.0.0
+
+info:
+    title: QuickEmailVerification
+    description: QuickEmailVerification
+    version: "v1"
+
+servers:
+    - url: https://api.quickemailverification.com/v1/
+
+paths:
+    /verify:
+        get:
+            operationId: QuickEmailVerification - Email Validation
+            summary: Lookup Email Legitimacy
+            parameters:
+                - in: query
+                  name: email
+                  schema:
+                      type: string
+                  required: true
+                  description: The email address to lookup
+            responses:
+                "200":
+                    description: OK
