@@ -1,0 +1,32 @@
+openapi: 3.0.0
+
+info:
+    title: IsTempEmail
+    description: IsTempEmail
+    version: "v1"
+
+servers:
+    - url: https://istmp-email.p.rapidapi.com/
+
+paths:
+    /domaincheck:
+        get:
+            operationId: IsTempEmail - Email Validation
+            summary: Lookup Email Legitimacy
+            parameters:
+                - in: query
+                  name: email
+                  schema:
+                      type: string
+                  required: true
+                  description: The email address to lookup
+                - in: query
+                  name: x-rapidapi-host
+                  schema:
+                      type: string
+                      default: istmp-email.p.rapidapi.com
+                  required: false
+                  description: Endpoint of the api. (No need to enter anything in this box)
+            responses:
+                "200":
+                    description: OK
