@@ -1,0 +1,32 @@
+openapi: 3.0.0
+
+info:
+    title: PulseDive Reports
+    description: PulseDive Reports
+    version: "v1"
+
+servers:
+    - url: https://pulsedive.com/api/
+
+paths:
+    /info.php:
+        get:
+            operationId: PulseDive - Indicator Report
+            summary: Lookup Indicator information
+            parameters:
+                - in: path
+                  name: indicator
+                  schema:
+                      type: string
+                  required: true
+                  description: The indicator to lookup on Pulsedive
+                - in: path
+                  name: pretty
+                  schema:
+                      type: integer
+                      default : 1
+                  required: false
+                  description: The indicator to lookup on Pulsedive
+            responses:
+                "200":
+                    description: OK
