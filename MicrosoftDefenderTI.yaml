@@ -1,0 +1,29 @@
+openapi: 3.0.0
+
+info:
+    title: Defender Threat Intelligence Indicator
+    description: Defender Threat Intelligence Indicator
+    version: "v1"
+
+servers:
+    - url: https://graph.microsoft.com/v1.0/security
+
+paths:
+    /alerts_v2?$select=id,title:
+        get:
+            operationId: Check Threat Intelligence Indicator
+            description: Check if the filehash exists in a company database of IOCs of Microsoft Defender.
+            ExamplePrompt:
+              - 'Check if the filehash <filehash> exists in the Microsoft Defender'
+            parameters:
+                - in: query
+                  name: $filter
+                  schema:
+                      type: string
+                  required: true
+                  description: A filter in the format of "fileHashValue eq <filehash>" where filehash is the value of the filehash you want to check.
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
