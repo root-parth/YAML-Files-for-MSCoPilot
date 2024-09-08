@@ -9,15 +9,15 @@ servers:
     - url: https://graph.microsoft.com/beta/security
 
 paths:
-    /tiIndicators:
+    /tiIndicators?$filter=fileHashValue+eq+'{filehash}':
         get:
             operationId: Check FileHash TI on Defender
             description: Check if the filehash exists in a company database of IOCs of Microsoft Defender.
             ExamplePrompt:
               - 'Check if the filehash <filehash> exists in the Microsoft Defender'
             parameters:
-                - in: query
-                  name: $filter
+                - in: path
+                  name: filehash
                   schema:
                       type: string
                   required: true
