@@ -14,19 +14,45 @@ paths:
             operationId: PulseDive - Indicator Report
             summary: Lookup Indicator information
             parameters:
-                - in: query
+                - in: path
                   name: indicator
                   schema:
                       type: string
                   required: true
                   description: The indicator to lookup on Pulsedive
-                - in: query
+                - in: path
                   name: pretty
                   schema:
                       type: string
                       default : 1
                   required: false
-                  description: The indicator to lookup on Pulsedive
+            responses:
+                "200":
+                    description: OK
+    /analyze.php:
+        post:
+            operationId: PulseDive - Indicator Report
+            summary: Lookup Indicator information
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                                properties:
+                                    value:
+                                        type: string
+                                        description: The indicator to submit on Pulsedive.
+                                    probe:
+                                        type: string
+                                        default : 1
+                                        description: The URL which you want to scan.
+                                    pretty:
+                                        type: string
+                                        default : 1
+                                        description: The URL which you want to scan.
+                                    required:
+                                        - value
             responses:
                 "200":
                     description: OK
