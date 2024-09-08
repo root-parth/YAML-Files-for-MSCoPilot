@@ -1,0 +1,29 @@
+openapi: 3.0.0
+
+info:
+    title: Defender Get Devices by Their ID
+    description: Defender Get Devices by Their ID
+    version: "v1.0"
+
+servers:
+    - url: https://graph.microsoft.com/v1.0
+
+paths:
+    /devices/{id}:
+        get:
+            operationId: Defender Get Devices by Their ID
+            description: Get the device name from the device ID.
+            ExamplePrompt:
+              - 'get me the devices host name by their ID.'
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: Enter device ID for which you want to get the hostname.
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
