@@ -6,7 +6,7 @@ info:
     version: "v1"
 
 servers:
-    - url: https://pulsedive.com/api/
+    - url: https://pulsedive.com/api
 
 paths:
     /info.php:
@@ -23,7 +23,7 @@ paths:
                 - in: query
                   name: pretty
                   schema:
-                      type: integer
+                      type: string
                       default : 1
                   required: false
                   description: The indicator to lookup on Pulsedive
