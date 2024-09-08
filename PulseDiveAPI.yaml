@@ -31,7 +31,7 @@ paths:
                     description: OK
     /analyze.php:
         post:
-            operationId: PulseDive - Indicator Report
+            operationId: PulseDive - Indicator Submission
             summary: Lookup Indicator information
             requestBody:
                 required: true
