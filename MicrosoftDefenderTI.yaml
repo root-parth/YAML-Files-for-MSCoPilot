@@ -13,8 +13,6 @@ paths:
         get:
             operationId: Check FileHash TI on Defender
             description: Check if the filehash exists in a company database of IOCs of Microsoft Defender.
-            ExamplePrompt:
-              - 'Check if the filehash <filehash> exists in the Microsoft Defender'
             parameters:
                 - in: path
                   name: filehash
@@ -25,5 +23,3 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
