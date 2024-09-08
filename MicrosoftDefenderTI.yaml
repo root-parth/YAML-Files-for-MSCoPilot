@@ -9,7 +9,7 @@ servers:
     - url: https://graph.microsoft.com/v1.0/security
 
 paths:
-    /alerts_v2?$select=id,title:
+    /tiIndicators:
         get:
             operationId: Check Threat Intelligence Indicator
             description: Check if the filehash exists in a company database of IOCs of Microsoft Defender.
