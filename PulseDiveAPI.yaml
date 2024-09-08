@@ -39,20 +39,20 @@ paths:
                     application/x-www-form-urlencoded:
                         schema:
                             type: object
-                                properties:
-                                    value:
-                                        type: string
-                                        description: The indicator to submit on Pulsedive.
-                                    probe:
-                                        type: string
-                                        default : 1
-                                        description: The URL which you want to scan.
-                                    pretty:
-                                        type: string
-                                        default : 1
-                                        description: The URL which you want to scan.
-                                    required:
-                                        - value
+                            properties:
+                                value:
+                                    type: string
+                                    description: The indicator to submit on Pulsedive.
+                                probe:
+                                    type: string
+                                    default : 1
+                                    description: The URL which you want to scan.
+                                pretty:
+                                    type: string
+                                    default : 1
+                                    description: The URL which you want to scan.
+                            required:
+                                - value
             responses:
                 "200":
                     description: OK
