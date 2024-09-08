@@ -30,26 +30,6 @@ paths:
                 "200":
                     description: OK
     /analyze.php:
-        get:
-            operationId: PulseDive - Get Indicator Report
-            summary: Lookup Indicator information
-            parameters:
-                - in: query
-                  name: qid
-                  schema:
-                      type: string
-                  required: true
-                  description: The indicator to lookup on Pulsedive
-                - in: query
-                  name: pretty
-                  schema:
-                      type: string
-                      default : 1
-                  required: false
-            responses:
-                "200":
-                    description: OK
-    /analyze.php:
         post:
             operationId: PulseDive - Indicator Submission
             summary: Indicator information
