@@ -13,8 +13,6 @@ paths:
         get:
             operationId: Defender Get Devices by Their ID
             description: Get the device name from the device ID.
-            ExamplePrompt:
-              - 'get me the devices host name by their ID.'
             parameters:
                 - in: path
                   name: id
@@ -25,5 +23,3 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content:
-                        application/json:
