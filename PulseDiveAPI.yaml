@@ -32,7 +32,7 @@ paths:
     /analyze.php:
         post:
             operationId: PulseDive - Indicator Submission
-            summary: Lookup Indicator information
+            summary: Indicator information
             requestBody:
                 required: true
                 content:
@@ -46,11 +46,11 @@ paths:
                                 probe:
                                     type: string
                                     default : 1
-                                    description: The URL which you want to scan.
+                                    description: Default set to 1
                                 pretty:
                                     type: string
                                     default : 1
-                                    description: The URL which you want to scan.
+                                    description: Default set to 1
                             required:
                                 - value
             responses:
