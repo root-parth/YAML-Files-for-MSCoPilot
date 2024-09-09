@@ -28,7 +28,7 @@ paths:
             operationId: Get Alerts of a specific severity - SPN
             description: Gets Alerts of a specific severity.
             parameters:
-                - in: query
+                - in: path
                   name: severity
                   schema:
                       type: string
