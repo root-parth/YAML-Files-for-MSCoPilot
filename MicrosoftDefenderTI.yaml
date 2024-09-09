@@ -9,7 +9,7 @@ servers:
     - url: https://graph.microsoft.com
 
 paths:
-    /beta/security/tiIndicators?:
+    /beta/security/tiIndicators:
         get:
             operationId: Check FileHash TI on Defender
             description: Check if the filehash exists in a company database of IOCs of Microsoft Defender.
