@@ -9,13 +9,13 @@ servers:
     - url: https://graph.microsoft.com
 
 paths:
-    /beta/security/tiIndicators?$filter=fileHashValue+eq+'{filehash}':
+    /beta/security/tiIndicators?:
         get:
             operationId: Check FileHash TI on Defender
             description: Check if the filehash exists in a company database of IOCs of Microsoft Defender.
             parameters:
                 - in: path
-                  name: filehash
+                  name: $filter
                   schema:
                       type: string
                   required: true
@@ -34,6 +34,12 @@ paths:
                       type: string
                   required: true
                   description: Write your query in the given format. severity eq '<severity>'
+                - in: query
+                  name: $select
+                  schema:
+                      type: string
+                  required: true
+                  description: Choose any fields from the given and make sure to pass them separated by commas like given in the example. (eg. id,title,description,category,recommendedActions,alertWebUrl,createdDateTime,lastUpdateDateTime)
             responses:
                 "200":
                     description: OK
