@@ -23,17 +23,17 @@ paths:
             responses:
                 "200":
                     description: OK
-    /beta/security/alerts_v2?$filter=severity+eq+'{severity}':
+    /beta/security/alerts_v2:
         get:
             operationId: Get Alerts of a specific severity
             description: Gets Alerts of a specific severity.
             parameters:
-                - in: path
-                  name: severity
+                - in: query
+                  name: $filter
                   schema:
                       type: string
                   required: true
-                  description: choose severity from Informational, Low, Medium, High.
+                  description: Write your query in the given format. severity eq '<severity>'
             responses:
                 "200":
                     description: OK
