@@ -23,3 +23,17 @@ paths:
             responses:
                 "200":
                     description: OK
+    /beta/security/alerts_v2?$filter=severity+eq+'{severity}':
+        get:
+            operationId: Get Alerts of a specific severity
+            description: Gets Alerts of a specific severity.
+            parameters:
+                - in: path
+                  name: severity
+                  schema:
+                      type: string
+                  required: true
+                  description: choose severity from Informational, Low, Medium, High.
+            responses:
+                "200":
+                    description: OK
