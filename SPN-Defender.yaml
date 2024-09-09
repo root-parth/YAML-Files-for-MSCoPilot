@@ -23,22 +23,22 @@ paths:
             responses:
                 "200":
                     description: OK
-    /security/alerts_v2?filter=severity eq '{severity}':
+    /security/alerts_v2:
         get:
-            operationId: Get Alerts of a specific severity - SPN
+            operationId: Get Alerts of a specific severity
             description: Gets Alerts of a specific severity.
             parameters:
-                - in: path
-                  name: severity
+                - in: query
+                  name: $filter
                   schema:
                       type: string
                   required: true
-                  description: pick out the severity out of informational,low,medium,high
+                  description: Write your query in the given format. severity eq '<severity>'
                 - in: query
                   name: $select
                   schema:
                       type: string
-                  required: true
+                  required: false
                   description: Choose any fields from the given and make sure to pass them separated by commas like given in the example. (eg. id,title,description,category,recommendedActions,alertWebUrl,createdDateTime,lastUpdateDateTime)
             responses:
                 "200":
