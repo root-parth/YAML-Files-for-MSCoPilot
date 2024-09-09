@@ -6,10 +6,10 @@ info:
     version: "beta"
 
 servers:
-    - url: https://graph.microsoft.com/beta/security
+    - url: https://graph.microsoft.com
 
 paths:
-    /tiIndicators?$filter=fileHashValue+eq+'{filehash}':
+    /beta/security/tiIndicators?$filter=fileHashValue+eq+'{filehash}':
         get:
             operationId: Check FileHash TI on Defender
             description: Check if the filehash exists in a company database of IOCs of Microsoft Defender.
