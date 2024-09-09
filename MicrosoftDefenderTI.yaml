@@ -3,13 +3,13 @@ openapi: 3.0.0
 info:
     title: Defender Threat Intelligence Indicator
     description: Defender Threat Intelligence Indicator
-    version: "beta"
+    version: "v1"
 
 servers:
-    - url: https://graph.microsoft.com
+    - url: https://graph.microsoft.com/v1.0
 
 paths:
-    /beta/security/tiIndicators:
+    /security/tiIndicators:
         get:
             operationId: Check FileHash TI on Defender
             description: Check if the filehash exists in a company database of IOCs of Microsoft Defender.
@@ -23,7 +23,7 @@ paths:
             responses:
                 "200":
                     description: OK
-    /beta/security/alerts_v2:
+    /security/alerts_v2:
         get:
             operationId: Get Alerts of a specific severity
             description: Gets Alerts of a specific severity.
