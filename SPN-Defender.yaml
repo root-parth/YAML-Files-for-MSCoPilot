@@ -1,0 +1,45 @@
+openapi: 3.0.0
+
+info:
+    title: Defender SPN
+    description: Defender SPN
+    version: "v1"
+
+servers:
+    - url: https://graph.microsoft.com/v1.0
+
+paths:
+    /security/tiIndicators:
+        get:
+            operationId: Check FileHash TI on Defender - SPN
+            description: Check if the filehash exists in a company database of IOCs of Microsoft Defender.
+            parameters:
+                - in: path
+                  name: $filter
+                  schema:
+                      type: string
+                  required: true
+                  description: A filter in the format of "fileHashValue eq <filehash>" where filehash is the value of the filehash you want to check.
+            responses:
+                "200":
+                    description: OK
+    /security/alerts_v2?filter=severity eq '{severity}':
+        get:
+            operationId: Get Alerts of a specific severity - SPN
+            description: Gets Alerts of a specific severity.
+            parameters:
+                - in: query
+                  name: severity
+                  schema:
+                      type: string
+                  required: true
+                  description: pick out the severity out of informational,low,medium,high
+                - in: query
+                  name: $select
+                  schema:
+                      type: string
+                  required: true
+                  description: Choose any fields from the given and make sure to pass them separated by commas like given in the example. (eg. id,title,description,category,recommendedActions,alertWebUrl,createdDateTime,lastUpdateDateTime)
+            responses:
+                "200":
+                    description: OK
