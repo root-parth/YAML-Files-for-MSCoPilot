@@ -12,7 +12,7 @@ paths:
     /security/tiIndicators:
         post:
             operationId: MDTI - Add Indicators
-            summary: This skill will add a potential IOC (IP Address, DomainName, URL, FIleHash) as the Threat Intelligence Indicator. Required fields are -> action, and one of these following values: domainName, url, networkIPv4, fileHashValue (must supply fileHashType in case of fileHashValue).
+            summary: This skill will add a potential IOC (IP Address, DomainName, URL, FIleHash) as the Threat Intelligence Indicator. Required fields are -> action, and one of these following values -> domainName, url, networkIPv4, fileHashValue (must supply fileHashType in case of fileHashValue).
             requestBody:
                 required: true
                 content:
@@ -64,7 +64,6 @@ paths:
                                     description: IPv4 IP address.
                                 fileHashType:
                                     type: string
-                                    default : 1
                                     enum: 
                                         - unknown
                                         - sha1
@@ -73,7 +72,7 @@ paths:
                                         - authenticodeHash256
                                         - lsHash
                                         - ctph
-                                    description: The type of hash stored in fileHashValue. Possible values are: unknown, sha1, sha256, md5, authenticodeHash256, lsHash, ctph.
+                                    description: The type of hash stored in fileHashValue. Possible values are -> unknown, sha1, sha256, md5, authenticodeHash256, lsHash, ctph.
                                 fileHashValue:
                                     type: string
                                     description: The file hash value.
