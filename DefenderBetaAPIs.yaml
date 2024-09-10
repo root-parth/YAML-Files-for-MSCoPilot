@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 info:
-    title: Defender SPN
-    description: Defender SPN
+    title: Microsoft Defender - Extension
+    description: Microsoft Defender - Extension
     version: "beta"
 
 servers:
@@ -11,15 +11,21 @@ servers:
 paths:
     /security/tiIndicators:
         get:
-            operationId: Check FileHash TI on Defender - SPN
-            description: Check if the filehash exists in a company database of IOCs of Microsoft Defender.
+            operationId: Check TI Database - Defender
+            description: Check if an IOC exists in a company database Microsoft Defender.
             parameters:
-                - in: path
+                - in: query
                   name: $filter
                   schema:
                       type: string
-                  required: true
+                  required: false
                   description: A filter in the format of "fileHashValue eq <filehash>" where filehash is the value of the filehash you want to check.
+                - in: query
+                  name: $top
+                  schema:
+                      type: integer
+                  required: false
+                  description: Get top n number of IOCs from the database of your organization on Microsoft Defender.
             responses:
                 "200":
                     description: OK
