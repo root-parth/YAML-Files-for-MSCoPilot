@@ -48,17 +48,17 @@ paths:
                                         - Proxy
                                         - PUA
                                         - WatchList
-                                    description: Default set to Malware
+                                    description: Each indicator must have a valid Indicator Threat Type. Possible values are -> Botnet, C2, CryptoMining, Darknet, DDoS, MaliciousUrl, Malware, Phishing, Proxy, PUA, WatchList. Default set to Malware
                                 targetProduct:
                                     type: string
                                     default : Microsoft Defender ATP
-                                    description: Default seta to Microsoft Defender ATP, you can also ingest this indicator as pulse in "Azure Sentinel".
+                                    description: A string value representing a single security product to which the indicator should be applied. Acceptable values are -> Azure Sentinel, Microsoft Defender ATP. Default set to Microsoft Defender ATP.
                                 domainName:
                                     type: string
                                     description: Domain name associated with this indicator. Should be of the format subdomain.domain.topleveldomain (For example, baddomain.domain.net)
                                 url:
                                     type: string
-                                    description: Uniform Resource Locator. This URL must comply with RFC 1738.
+                                    description: Uniform Resource Locator which you want to add in the TI. This URL must comply with RFC 1738.
                                 networkIPv4:
                                     type: string
                                     description: IPv4 IP address.
@@ -85,16 +85,16 @@ paths:
                                         - green
                                         - amber
                                         - red
-                                    description: The default value is red.
-                                condidence:
+                                    description: Traffic Light Protocol value for the indicator. Possible values are -> unknown, white, green, amber, red. This field is required. The default value is red.
+                                confidence:
                                     type: integer
                                     default : 75
-                                    description: Default set to 1
+                                    description: An integer representing the confidence the data within the indicator accurately identifies malicious behavior. Acceptable values are 0 - 100 with 100 being the highest. Default set to 75.
                                 expirationDateTime:
                                     type: string
                                     format: date-time
                                     example: 2017-07-21T17:32:28Z
-                                    description: Enter the expiration time of the indicator
+                                    description: Enter the expiration time of the indicator.
                                 severity:
                                     type: integer
                                     default : 3
@@ -104,9 +104,12 @@ paths:
                                         - 3
                                         - 4
                                         - 5
-                                    description: Default set to 3
+                                    description: An integer representing the severity of the malicious behavior identified by the data within the indicator. Acceptable values are 0 - 5 where 5 is the most severe and zero isn't severe at all. Default value is 3. Default set to 3
                             required:
                                 - action
+                                - description
+                                - tlpLevel
+                                - confidence
             responses:
                 "200":
                     description: OK
