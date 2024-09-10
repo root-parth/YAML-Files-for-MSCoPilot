@@ -1,0 +1,108 @@
+openapi: 3.0.0
+
+info:
+    title: Microsoft Defender - Threat Intelligence Indicators - Extension
+    description: Microsoft Defender - Threat Intelligence Indicators - Extension
+    version: "beta"
+
+servers:
+    - url: https://graph.microsoft.com/beta
+
+paths:
+    /security/tiIndicators:
+        post:
+            operationId: MDTI - Add Indicators
+            summary: This skill will add a potential IOC (IP Address, DomainName, URL, FIleHash) as the Threat Intelligence Indicator. Required fields are -> action, and one of these following values: domainName, url, networkIPv4, fileHashValue (must supply fileHashType in case of fileHashValue).
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                action:
+                                    type: string
+                                    default: block
+                                    enum: 
+                                        - unknown
+                                        - allow
+                                        - block
+                                        - alert
+                                    description: The action to apply if the indicator is matched from within the targetProduct security tool. Possible values are -> unknown, allow, block, alert. Required.
+                                description:
+                                    type: string
+                                    default : Adding a Potential IOCs from 
+                                    description: Brief description (100 characters or less) of the threat represented by the indicator. Required.
+                                threatType:
+                                    type: string
+                                    default : Malware
+                                    enum: 
+                                        - Botnet
+                                        - C2
+                                        - CrypotoMining
+                                        - Darknet
+                                        - DDoS
+                                        - MaliciousUrl
+                                        - Malware
+                                        - Phishing
+                                        - Proxy
+                                        - PUA
+                                        - WatchList
+                                    description: Default set to Malware
+                                targetProduct:
+                                    type: string
+                                    default : Microsoft Defender ATP
+                                    description: Default seta to Microsoft Defender ATP, you can also ingest this indicator as pulse in "Azure Sentinel".
+                                domainName:
+                                    type: string
+                                    description: Domain name associated with this indicator. Should be of the format subdomain.domain.topleveldomain (For example, baddomain.domain.net)
+                                url:
+                                    type: string
+                                    description: Uniform Resource Locator. This URL must comply with RFC 1738.
+                                networkIPv4:
+                                    type: string
+                                    description: IPv4 IP address.
+                                fileHashType:
+                                    type: string
+                                    default : 1
+                                    enum: 
+                                        - unknown
+                                        - sha1
+                                        - sha256
+                                        - md5
+                                        - authenticodeHash256
+                                        - lsHash
+                                        - ctph
+                                    description: The type of hash stored in fileHashValue. Possible values are: unknown, sha1, sha256, md5, authenticodeHash256, lsHash, ctph.
+                                fileHashValue:
+                                    type: string
+                                    description: The file hash value.
+                                tlpLevel:
+                                    type: string
+                                    default: red
+                                    enum: 
+                                        - unknown
+                                        - white
+                                        - green
+                                        - amber
+                                        - red
+                                    description: The default value is red.
+                                condidence:
+                                    type: integer
+                                    default : 75
+                                    description: Default set to 1
+                                severity:
+                                    type: integer
+                                    default : 3
+                                    enum: 
+                                        - 1
+                                        - 2
+                                        - 3
+                                        - 4
+                                        - 5
+                                    description: Default set to 3
+                            required:
+                                - action
+            responses:
+                "200":
+                    description: OK
