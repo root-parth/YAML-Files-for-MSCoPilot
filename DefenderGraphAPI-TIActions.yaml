@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 info:
-    title: Microsoft Defender - Threat Intelligence Indicators - Extension
-    description: Microsoft Defender - Threat Intelligence Indicators - Extension
+    title: MDTI - Extension for Threat Indicators
+    description: MDTI - Extension for Threat Indicators
     version: "beta"
 
 servers:
@@ -10,9 +10,28 @@ servers:
 
 paths:
     /security/tiIndicators:
+        get:
+            operationId: MDTI - Check Indicators
+            description: Check if an IOC exists in a company database Microsoft Defender.
+            parameters:
+                - in: query
+                  name: $filter
+                  schema:
+                      type: string
+                  required: false
+                  description: A filter in the format of "fileHashValue eq <filehash>" where filehash is the value of the filehash you want to check.
+                - in: query
+                  name: $top
+                  schema:
+                      type: integer
+                  required: false
+                  description: Get top n number of IOCs from the database of your organization on Microsoft Defender.
+            responses:
+                "200":
+                    description: OK
         post:
             operationId: MDTI - Add Indicators
-            summary: This skill will add a potential IOC (IP Address, DomainName, URL, FIleHash) as the Threat Intelligence Indicator. Required fields are -> action, and one of these following values -> domainName, url, networkIPv4, fileHashValue (must supply fileHashType in case of fileHashValue).
+            summary: This skill will add a potential IOC (IP Address, DomainName, URL, FIleHash) as the Threat Intelligence Indicator. Required fields are -> action, description, expirationDateTime, targetProduct, threatType, tlpLevel. and one of these following values -> domainName, url, networkIPv4, fileHashValue (must supply fileHashType in case of fileHashValue).
             requestBody:
                 required: true
                 content:
@@ -28,7 +47,7 @@ paths:
                                         - allow
                                         - block
                                         - alert
-                                    description: The action to apply if the indicator is matched from within the targetProduct security tool. Possible values are -> unknown, allow, block, alert. Required.
+                                    description: The ACTION to apply if the indicator is matched from within the targetProduct security tool. Possible values are -> unknown, allow, block, alert. Required.
                                 description:
                                     type: string
                                     default : Adding a Potential IOCs from 
@@ -48,7 +67,7 @@ paths:
                                         - Proxy
                                         - PUA
                                         - WatchList
-                                    description: Each indicator must have a valid Indicator Threat Type. Possible values are -> Botnet, C2, CryptoMining, Darknet, DDoS, MaliciousUrl, Malware, Phishing, Proxy, PUA, WatchList. Default set to Malware
+                                    description: Potential threat type associated with the indicator. Possible values are -> Botnet, C2, CryptoMining, Darknet, DDoS, MaliciousUrl, Malware, Phishing, Proxy, PUA, WatchList. Default set to Malware
                                 targetProduct:
                                     type: string
                                     default : Microsoft Defender ATP
@@ -58,7 +77,7 @@ paths:
                                     description: Domain name associated with this indicator. Should be of the format subdomain.domain.topleveldomain (For example, baddomain.domain.net)
                                 url:
                                     type: string
-                                    description: Uniform Resource Locator which you want to add in the TI. This URL must comply with RFC 1738.
+                                    description: URL which you want to add in the TI. This URL must comply with RFC 1738.
                                 networkIPv4:
                                     type: string
                                     description: IPv4 IP address.
@@ -89,12 +108,10 @@ paths:
                                 confidence:
                                     type: integer
                                     default : 75
-                                    description: An integer representing the confidence the data within the indicator accurately identifies malicious behavior. Acceptable values are 0 - 100 with 100 being the highest. Default set to 75.
+                                    description: A value representing the confidence the data within the indicator accurately identifies malicious behavior. Acceptable values are 0 - 100 with 100 being the highest. Default set to 75.
                                 expirationDateTime:
                                     type: string
-                                    format: date-time
-                                    example: 2017-07-21T17:32:28Z
-                                    description: Enter the expiration time of the indicator.
+                                    description: Enter the expiration time of the indicator in UTC time Format(yyyy-mm-ddTHH:MM:SSZ).
                                 severity:
                                     type: integer
                                     default : 3
@@ -104,12 +121,15 @@ paths:
                                         - 3
                                         - 4
                                         - 5
-                                    description: An integer representing the severity of the malicious behavior identified by the data within the indicator. Acceptable values are 0 - 5 where 5 is the most severe and zero isn't severe at all. Default value is 3. Default set to 3
+                                    description: Severity of the Indicator. Acceptable values are 0 - 5 where 5 is the most severe and zero isn't severe at all. Default value is 3. Default set to 3
                             required:
                                 - action
                                 - description
                                 - tlpLevel
                                 - confidence
+                                - targetProduct
             responses:
                 "200":
                     description: OK
+                "201":
+                    description: Successfully created the Indicator
