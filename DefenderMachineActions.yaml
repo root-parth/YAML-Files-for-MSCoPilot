@@ -1,0 +1,76 @@
+openapi: 3.0.0
+
+info:
+    title: Microsoft Defender - SuperExtention
+    description: Microsoft Defender - SuperExtention
+    version: "v1"
+
+servers:
+    - url: https://api.securitycenter.microsoft.com/api
+
+paths:
+    /machines/{id}/isolate:
+        post:
+            operationId: MDTI - Isolate a Machine
+            summary: This skill will Isolates a device from accessing external network.
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The id of the machine you want to isolate.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                Comment:
+                                    type: string
+                                    default : Blocking a machine from Copilot.
+                                    description: A string value representing an appropriate comment for machine isolation.
+                                IsolationType:
+                                    type: string
+                                    enum: 
+                                        - Full
+                                        - Selective
+                                    description: Type of the isolation. Allowed values are 'Full' or 'Selective'.
+                            required:
+                                - Comment
+                                - IsolationType
+            responses:
+                "200":
+                    description: OK
+                "201":
+                    description: Successfully created the Indicator
+    /machines/{id}/unisolate:
+        post:
+            operationId: MDTI - Un-isolate a Machine
+            summary: This skill will Un-isolate a device from accessing external network.
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The id of the machine you want to un-isolate.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                Comment:
+                                    type: string
+                                    default : Blocking a machine from Copilot.
+                                    description: A string value representing an appropriate comment for machine isolation.
+                            required:
+                                - Comment
+            responses:
+                "200":
+                    description: OK
+                "201":
+                    description: Successfully created the Indicator 
