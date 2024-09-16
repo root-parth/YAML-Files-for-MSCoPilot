@@ -73,4 +73,19 @@ paths:
                 "200":
                     description: OK
                 "201":
-                    description: Successfully created the Indicator 
+                    description: Successfully created the Indicator
+    /machines:
+        get:
+            operationId: MDTI - Get Machine Details
+            description: Get Machine details which is onboarded on the Microsoft Defender XDR.
+            parameters:
+                - in: query
+                  name: $filter
+                  schema:
+                      type: string
+                  required: true
+                  example: contains(computerDnsName, 'Desktop-Parth')
+                  description: A filter to get your machine. Make sure to format it like following. contains(computerDnsName, 'Desktop-Parth')
+            responses:
+                "200":
+                    description: OK
