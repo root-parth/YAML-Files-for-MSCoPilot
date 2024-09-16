@@ -1,91 +1,135 @@
 openapi: 3.0.0
 
 info:
-    title: Microsoft Defender - SuperExtention
-    description: Microsoft Defender - SuperExtention
-    version: "v1"
+    title: Microsoft Defender - Threat Intelligence Indicators - Extension
+    description: Microsoft Defender - Threat Intelligence Indicators - Extension
+    version: "beta"
 
 servers:
-    - url: https://api.securitycenter.microsoft.com/api
+    - url: https://graph.microsoft.com/beta
 
 paths:
-    /machines/{id}/isolate:
-        post:
-            operationId: MDTI - Isolate a Machine
-            summary: This skill will Isolates a device from accessing external network.
-            parameters:
-                - in: path
-                  name: id
-                  schema:
-                      type: string
-                  required: true
-                  description: The id of the machine you want to isolate.
-            requestBody:
-                required: true
-                content:
-                    application/json:
-                        schema:
-                            type: object
-                            properties:
-                                Comment:
-                                    type: string
-                                    default : Blocking a machine from Copilot.
-                                    description: A string value representing an appropriate comment for machine isolation.
-                                IsolationType:
-                                    type: string
-                                    enum: 
-                                        - Full
-                                        - Selective
-                                    description: Type of the isolation. Allowed values are 'Full' or 'Selective'.
-                            required:
-                                - Comment
-                                - IsolationType
-            responses:
-                "200":
-                    description: OK
-                "201":
-                    description: Successfully created the Indicator
-    /machines/{id}/unisolate:
-        post:
-            operationId: MDTI - Un-isolate a Machine
-            summary: This skill will Un-isolate a device from accessing external network.
-            parameters:
-                - in: path
-                  name: id
-                  schema:
-                      type: string
-                  required: true
-                  description: The id of the machine you want to un-isolate.
-            requestBody:
-                required: true
-                content:
-                    application/json:
-                        schema:
-                            type: object
-                            properties:
-                                Comment:
-                                    type: string
-                                    default : Blocking a machine from Copilot.
-                                    description: A string value representing an appropriate comment for machine isolation.
-                            required:
-                                - Comment
-            responses:
-                "200":
-                    description: OK
-                "201":
-                    description: Successfully created the Indicator
-    /machines:
+    /security/tiIndicators:
         get:
-            operationId: MDTI - Get Basic Machine Details
-            description: Get Machine details which is onboarded on the Microsoft Defender XDR.
+            operationId: MDTI - Check Indicators
+            description: Check if an IOC exists in a company database Microsoft Defender.
             parameters:
                 - in: query
                   name: $filter
-                  example: contains(computerDnsName, 'Desktop-Parth')
                   schema:
                       type: string
-                  required: true
-                  description: A filter to get your machine. Make sure to format it like following. <contains(computerDnsName, 'Desktop-Parth')>
+                  required: false
+                  description: A filter in the format of "fileHashValue eq <filehash>" where filehash is the value of the filehash you want to check.
+                - in: query
+                  name: $top
+                  schema:
+                      type: integer
+                  required: false
+                  description: Get top n number of IOCs from the database of your organization on Microsoft Defender.
             responses:
                 "200":
                     description: OK
+        post:
+            operationId: MDTI - Add Indicators
+            summary: This skill will add a potential IOC (IP Address, DomainName, URL, FIleHash) as the Threat Intelligence Indicator. Required fields are -> action, description, expirationDateTime, targetProduct, threatType, tlpLevel. and one of these following values -> domainName, url, networkIPv4, fileHashValue (must supply fileHashType in case of fileHashValue).
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                action:
+                                    type: string
+                                    default: block
+                                    enum: 
+                                        - unknown
+                                        - allow
+                                        - block
+                                        - alert
+                                    description: The ACTION to apply if the indicator is matched from within the targetProduct security tool. Possible values are -> unknown, allow, block, alert. Required.
+                                description:
+                                    type: string
+                                    default : Adding a Potential IOCs from 
+                                    description: Brief description (100 characters or less) of the threat represented by the indicator. Required.
+                                threatType:
+                                    type: string
+                                    default : Malware
+                                    enum: 
+                                        - Botnet
+                                        - C2
+                                        - CrypotoMining
+                                        - Darknet
+                                        - DDoS
+                                        - MaliciousUrl
+                                        - Malware
+                                        - Phishing
+                                        - Proxy
+                                        - PUA
+                                        - WatchList
+                                    description: Potential threat type associated with the indicator. Possible values are -> Botnet, C2, CryptoMining, Darknet, DDoS, MaliciousUrl, Malware, Phishing, Proxy, PUA, WatchList. Default set to Malware
+                                targetProduct:
+                                    type: string
+                                    default : Microsoft Defender ATP
+                                    description: A string value representing a single security product to which the indicator should be applied. Acceptable values are -> Azure Sentinel, Microsoft Defender ATP. Default set to Microsoft Defender ATP.
+                                domainName:
+                                    type: string
+                                    description: Domain name associated with this indicator. Should be of the format subdomain.domain.topleveldomain (For example, baddomain.domain.net)
+                                url:
+                                    type: string
+                                    description: URL which you want to add in the TI. This URL must comply with RFC 1738.
+                                networkIPv4:
+                                    type: string
+                                    description: IPv4 IP address.
+                                fileHashType:
+                                    type: string
+                                    enum: 
+                                        - unknown
+                                        - sha1
+                                        - sha256
+                                        - md5
+                                        - authenticodeHash256
+                                        - lsHash
+                                        - ctph
+                                    description: The type of hash stored in fileHashValue. Possible values are -> unknown, sha1, sha256, md5, authenticodeHash256, lsHash, ctph.
+                                fileHashValue:
+                                    type: string
+                                    description: The file hash value.
+                                tlpLevel:
+                                    type: string
+                                    default: red
+                                    enum: 
+                                        - unknown
+                                        - white
+                                        - green
+                                        - amber
+                                        - red
+                                    description: Traffic Light Protocol value for the indicator. Possible values are -> unknown, white, green, amber, red. This field is required. The default value is red.
+                                confidence:
+                                    type: integer
+                                    default : 75
+                                    description: A value representing the confidence the data within the indicator accurately identifies malicious behavior. Acceptable values are 0 - 100 with 100 being the highest. Default set to 75.
+                                expirationDateTime:
+                                    type: string
+                                    description: Enter the expiration time of the indicator in UTC time Format(yyyy-mm-ddTHH:MM:SSZ).
+                                severity:
+                                    type: integer
+                                    default : 3
+                                    enum: 
+                                        - 1
+                                        - 2
+                                        - 3
+                                        - 4
+                                        - 5
+                                    description: Severity of the Indicator. Acceptable values are 0 - 5 where 5 is the most severe and zero isn't severe at all. Default value is 3. Default set to 3
+                            required:
+                                - action
+                                - description
+                                - tlpLevel
+                                - confidence
+                                - targetProduct
+            responses:
+                "200":
+                    description: OK
+                "201":
+                    description: Successfully created the Indicator
