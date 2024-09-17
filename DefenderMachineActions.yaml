@@ -147,3 +147,40 @@ paths:
                     description: OK
                 "201":
                     description: Successfully created the Indicator
+    /machines/{id}/runAntiVirusScan:
+        post:
+            operationId: MDTI - Run Anti-Virus Scan
+            summary: This skill initiate the process to start Full or Quick scan on a device which is onboarded to Microsoft Defender XDR.
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The id of the machine you want to run the anti virus scan on.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                ScanType:
+                                    type: string
+                                    default : Quick
+                                    enum: 
+                                        - Quick
+                                        - Full
+                                    description: Defines the type of the Scan.
+                                Comment:
+                                    type: string
+                                    default : Restricting app execution from Copilot.
+                                    description: A string value representing an appropriate comment for running a scan on machine.
+                            required:
+                                - Comment
+                                - ScanType
+            responses:
+                "200":
+                    description: OK
+                "201":
+                    description: Successful
