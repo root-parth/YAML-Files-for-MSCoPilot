@@ -83,9 +83,67 @@ paths:
                   name: $filter
                   schema:
                       type: string
-                  required: true
+                  required: false
                   example: contains(computerDnsName, 'Desktop-Parth')
                   description: A filter to get your machine. Make sure to format it like following. contains(computerDnsName, 'Desktop-Parth')
             responses:
                 "200":
                     description: OK
+    /machines/{id}/restrictCodeExecution:
+        post:
+            operationId: MDTI - Restrict app execution
+            summary: This skill will restrict any third-party app execution on device.
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The id of the machine you want to Restrict app execution.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                Comment:
+                                    type: string
+                                    default : Restricting app execution from Copilot.
+                                    description: A string value representing an appropriate comment for Restricting app execution.
+                            required:
+                                - Comment
+            responses:
+                "200":
+                    description: OK
+                "201":
+                    description: Successfully created the Indicator
+    /machines/{id}/unrestrictCodeExecution:
+        post:
+            operationId: MDTI - Remove app restriction
+            summary: This skill will remove restricion of any third-party app on device which is onboarded to Microsoft Defender XDR.
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The id of the machine you want to release from restriction of app execution.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                Comment:
+                                    type: string
+                                    default : Restricting app execution from Copilot.
+                                    description: A string value representing an appropriate comment for releasing a machine from App exection.
+                            required:
+                                - Comment
+            responses:
+                "200":
+                    description: OK
+                "201":
+                    description: Successfully created the Indicator
