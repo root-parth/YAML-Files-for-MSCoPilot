@@ -11,7 +11,7 @@ servers:
 paths:
     /machines/{id}/isolate:
         post:
-            operationId: MDTI - Isolate a Machine
+            operationId: Defender XDR - Isolate a Machine
             summary: This skill will Isolates a device from accessing external network.
             parameters:
                 - in: path
@@ -47,7 +47,7 @@ paths:
                     description: Successfully created the Indicator
     /machines/{id}/unisolate:
         post:
-            operationId: MDTI - Un-isolate a Machine
+            operationId: Defender XDR - Un-isolate a Machine
             summary: This skill will Un-isolate a device from accessing external network.
             parameters:
                 - in: path
@@ -76,7 +76,7 @@ paths:
                     description: Successfully created the Indicator
     /machines:
         get:
-            operationId: MDTI - Get Machine Details
+            operationId: Defender XDR - Get Machine Details
             description: Get Machine details which is onboarded on the Microsoft Defender XDR.
             parameters:
                 - in: query
@@ -91,7 +91,7 @@ paths:
                     description: OK
     /machines/{id}/restrictCodeExecution:
         post:
-            operationId: MDTI - Restrict app execution
+            operationId: Defender XDR - Restrict app execution
             summary: This skill will restrict any third-party app execution on device.
             parameters:
                 - in: path
@@ -120,7 +120,7 @@ paths:
                     description: Successfully created the Indicator
     /machines/{id}/unrestrictCodeExecution:
         post:
-            operationId: MDTI - Remove app restriction
+            operationId: Defender XDR - Remove app restriction
             summary: This skill will remove restricion of any third-party app on device which is onboarded to Microsoft Defender XDR.
             parameters:
                 - in: path
@@ -149,7 +149,7 @@ paths:
                     description: Successfully created the Indicator
     /machines/{id}/runAntiVirusScan:
         post:
-            operationId: MDTI - Run Anti-Virus Scan
+            operationId: Defender XDR - Run Anti-Virus Scan
             summary: This skill initiate the process to start Full or Quick scan on a device which is onboarded to Microsoft Defender XDR.
             parameters:
                 - in: path
