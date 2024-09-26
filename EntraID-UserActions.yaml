@@ -1,0 +1,42 @@
+openapi: 3.0.0
+
+info:
+    title: Microsoft Entra ID - User Actions via Extension
+    description: Microsoft Entra ID - User Actions via Extension
+    version: "v1"
+
+servers:
+    - url: https://graph.microsoft.com/v1.0
+
+paths:
+    /users/{userPrincipalName}:
+        patch:
+            operationId: Entra ID - Enable or Disable user
+            summary: This skill will block the sign-ins of an Entra ID user.
+            parameters:
+                - in: path
+                  name: userPrincipalName
+                  schema:
+                      type: string
+                  required: true
+                  description: The userPrincipalName whose account you want to Enable or Disable.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                accountEnabled:
+                                    type: boolean
+                                    enum: 
+                                        - true
+                                        - false
+                                    description: A string value representing an appropriate comment for machine isolation.
+                            required:
+                                - accountEnabled
+            responses:
+                "200":
+                    description: OK
+                "204":
+                    description: Successful
