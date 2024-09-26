@@ -10,6 +10,19 @@ servers:
 
 paths:
     /users/{userPrincipalName}:
+        get:
+            operationId: Entra ID - Get User Details
+            description: Get all the details about a user.
+            parameters:
+                - in: path
+                  name: userPrincipalName
+                  schema:
+                      type: string
+                  required: true
+                  description: Enter username for which you would like to get all the information.
+            responses:
+                "200":
+                    description: OK
         patch:
             operationId: Entra ID - Enable or Disable user
             summary: This skill will block the sign-ins of an Entra ID user.
@@ -38,5 +51,3 @@ paths:
             responses:
                 "200":
                     description: OK
-                "204":
-                    description: Successful
