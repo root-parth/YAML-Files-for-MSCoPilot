@@ -9,6 +9,21 @@ servers:
     - url: https://graph.microsoft.com/v1.0
 
 paths:
+    /users/{userPrincipalName}/revokeSignInSessions:
+        post:
+            operationId: Entra ID - Revoke User Sessions
+            summary: This skill will revoke all the active sessions of a user.
+            description: This skill will revoke all the active sessions of a user.
+            parameters:
+                - in: path
+                  name: userPrincipalName
+                  schema:
+                      type: string
+                  required: true
+                  description: The userPrincipalName whose sessions you would like to remove.
+            responses:
+                "200":
+                    description: OK 
     /users/{userPrincipalName}:
         get:
             operationId: Entra ID - Get User Details
@@ -51,3 +66,5 @@ paths:
             responses:
                 "200":
                     description: OK
+                "204":
+                    description: Successful
