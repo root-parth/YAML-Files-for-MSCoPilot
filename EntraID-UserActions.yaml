@@ -9,6 +9,33 @@ servers:
     - url: https://graph.microsoft.com/v1.0
 
 paths:
+    /users/{userPrincipalName}/authentication/methods/28c10230-6103-485e-b985-444c60001490/resetPassword:
+        post:
+            operationId: Entra ID - Reset Password for a User
+            summary: This skill will reset a password for a user.
+            description: This skill will reset a password for a user.
+            parameters:
+                - in: path
+                  name: userPrincipalName
+                  schema:
+                      type: string
+                  required: true
+                  description: The userPrincipalName whose password you would like to reset.
+            requestBody:
+                required: false
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                newPassword:
+                                    type: string
+                                    description: The new password for the user. If left empty, the system will generate a new password for the user automatically.
+            responses:
+                "200":
+                    description: OK
+                "202":
+                    description: Accepted
     /users/{userPrincipalName}/revokeSignInSessions:
         post:
             operationId: Entra ID - Revoke User Sessions
@@ -20,7 +47,7 @@ paths:
                   schema:
                       type: string
                   required: true
-                  description: The userPrincipalName whose sessions you would like to remove.
+                  description: The userPrincipalName whose sessions you would like to revoke.
             responses:
                 "200":
                     description: OK 
@@ -28,6 +55,7 @@ paths:
         get:
             operationId: Entra ID - Get User Details
             description: Get all the details about a user.
+            summary: This skill will reset a password for a user.
             parameters:
                 - in: path
                   name: userPrincipalName
@@ -60,7 +88,7 @@ paths:
                                     enum: 
                                         - true
                                         - false
-                                    description: A string value representing an appropriate comment for machine isolation.
+                                    description: Set this value as "true" if you want to enable an account, opposite is true for "false".
                             required:
                                 - accountEnabled
             responses:
