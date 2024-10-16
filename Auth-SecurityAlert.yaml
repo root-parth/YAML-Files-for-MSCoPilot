@@ -1,0 +1,31 @@
+openapi: 3.0.0
+
+info:
+    title: Security Alerts - Graph Authorization
+    description: Security Alerts - Graph Authorization
+    version: "v1"
+
+servers:
+    - url: https://graph.microsoft.com/v1.0
+
+paths:
+    /security/alerts_v2:
+        get:
+            operationId: Get Alerts of a specific severity
+            description: Gets Alerts of a specific severity.
+            parameters:
+                - in: query
+                  name: $filter
+                  schema:
+                      type: string
+                  required: true
+                  description: Write your query in the given format. severity eq '<severity>'
+                - in: query
+                  name: $select
+                  schema:
+                      type: string
+                  required: false
+                  description: Choose any fields from the given and make sure to pass them separated by commas like given in the example. (eg. id,title,description,category,recommendedActions,alertWebUrl,createdDateTime,lastUpdateDateTime)
+            responses:
+                "200":
+                    description: OK
