@@ -184,7 +184,7 @@ paths:
                     description: OK
                 "201":
                     description: Successful
-    /machines/{id}/runAntiVirusScan:
+    /machines/{id}/StopAndQuarantineFile:
         post:
             operationId: Defender XDR - Stop and quarantine file
             summary: This skill initiate the process to Stop execution of a file on a device and delete it.
