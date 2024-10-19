@@ -184,3 +184,33 @@ paths:
                     description: OK
                 "201":
                     description: Successful
+    /machines/{id}/runAntiVirusScan:
+        post:
+            operationId: Defender XDR - Stop and quarantine file
+            summary: This skill initiate the process to Stop execution of a file on a device and delete it.
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: string
+                  required: true
+                  description: The id of the machine you want to Stop execution of a file on a device and delete it.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                Sha1:
+                                    type: string
+                                    description: Input the sha1 of the file which you want to Stop execution of on a device and delete it.
+                                Comment:
+                                    type: string
+                                    default : Quarantining a file as it was detected suspicious after the analysis.
+                                    description: A string value representing an appropriate comment for quarantining the file.
+            responses:
+                "200":
+                    description: OK
+                "201":
+                    description: Successful
