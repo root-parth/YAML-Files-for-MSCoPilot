@@ -214,3 +214,30 @@ paths:
                     description: OK
                 "201":
                     description: Successful
+    /machineactions/{machineactionid}/cancel:
+        post:
+            operationId: Defender XDR - Cancel a Machine Action
+            summary: This skill initiate the process to cancel a machine action already initiated and isn't yet in final state (completed, canceled, failed) from this plugin. 
+            parameters:
+                - in: path
+                  name: machineactionid
+                  schema:
+                      type: string
+                  required: true
+                  description: The id of the machine where you initated an action and now you want to undo it.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                Comment:
+                                    type: string
+                                    default : Cancelling a machine action.
+                                    description: Cancel an already launched machine action that isn't yet in final state (completed, canceled, failed).
+            responses:
+                "200":
+                    description: OK
+                "400":
+                    description: Not Found
