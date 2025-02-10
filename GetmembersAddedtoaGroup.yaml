@@ -14,10 +14,10 @@ SkillGroups:
             Required: true
         Settings:
           Target: Sentinel
-          TenantId: 76d6f49a-7a26-4433-818f-55a47ae85a0c
-          SubscriptionId: 3affbdc3-38f2-4efb-a0bb-0ac9280ba152
-          ResourceGroupName: sentinel-soc
-          WorkspaceName: PCS-MSSP-Sentinel
+          TenantId: 316f06ca-066c-4a48-8790-57b76d684796
+          SubscriptionId: b8f99f9f-c121-422b-a657-c999df2c5296
+          ResourceGroupName: rg-jayesh
+          WorkspaceName: PCS-Sentinel-Demo
           Template: |-
             let timeperiod = {{timeperiod}};
             AuditLogs
