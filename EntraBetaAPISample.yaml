@@ -1,0 +1,26 @@
+openapi: 3.0.0
+
+info:
+    title: Entra ID - Beta API Sample
+    description: Parths Defender Threat Intelligence Indicator
+    version: "v1"
+
+servers:
+    - url: https://graph.microsoft.com/beta
+
+paths:
+    /user/{userPrincipalName}::
+        get:
+            operationId: Entra ID - Get User Details -Beta
+            description: Get all the details about a user using beta version of the api.
+            summary: Get all the details about a user using beta version of the api.
+            parameters:
+                - in: path
+                  name: userPrincipalName
+                  schema:
+                      type: string
+                  required: true
+                  description: Enter username for which you would like to get all the information.
+            responses:
+                "200":
+                    description: OK
