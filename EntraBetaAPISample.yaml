@@ -9,7 +9,7 @@ servers:
     - url: https://graph.microsoft.com/beta
 
 paths:
-    /user/{userPrincipalName}::
+    /users/{userPrincipalName}::
         get:
             operationId: Entra ID - Get User Details -Beta
             description: Get all the details about a user using beta version of the api.
