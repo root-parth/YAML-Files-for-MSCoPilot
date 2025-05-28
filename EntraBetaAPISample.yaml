@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
     title: Entra ID - Beta API Sample
     description: Parths Defender Threat Intelligence Indicator
-    version: "v1"
+    version: "beta"
 
 servers:
     - url: https://graph.microsoft.com/beta
