@@ -1,0 +1,27 @@
+openapi: 3.0.0
+
+info:
+    title: Microsoft Defender - SuperExtention
+    description: Microsoft Defender - SuperExtention
+    version: "v1"
+
+servers:
+    - url: https://api.securitycenter.microsoft.com/api
+
+paths:
+    /machines:
+        get:
+            operationId: Defender XDR - Get Machine Details
+            description: Get Machine details which is onboarded on the Microsoft Defender XDR.
+            parameters:
+                - in: query
+                  name: $filter
+                  schema:
+                      type: string
+                      default: contains(computerDnsName, 'DeviceNameHere')
+                  required: false
+                  example: contains(computerDnsName, 'DeviceNameHere')
+                  description: A filter to get your machine. Make sure to format it like following. contains(computerDnsName, 'DeviceNameHere')
+            responses:
+                "200":
+                    description: OK
