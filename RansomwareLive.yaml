@@ -1,0 +1,129 @@
+openapi: 3.0.0
+
+info:
+    title: Ransomware Live
+    description: Ransomware Live
+    version: "v2"
+
+servers:
+    - url: https://api.ransomware.live/v2
+
+paths:
+    /recentvictims:
+        get:
+            operationId: Get Recent Victims - RamsomwareLive
+            summary: Get information about the recent victims of ransomware.
+            responses:
+                "200":
+                    description: OK
+    /groups:
+        get:
+            operationId: List Ransomware Groups - RansomwareLive
+            summary: Get a list of all of the ransomware groups active and recorded by the database.
+            responses:
+                "200":
+                    description: OK
+    /group/{group_name}:
+        get:
+            operationId: Lookup Ransomware Group - RansomwareLive
+            summary: Get a information about a specific ransomware group.
+            parameters:
+                - in: path
+                  name: group_name
+                  schema:
+                      type: string
+                  required: true
+                  description: The group name to lookup
+            responses:
+                "200":
+                    description: OK
+    /allcyberattacks:
+        get:
+            operationId: Get List of all known CyberAttacks - RansomwareLive
+            summary: Get List of all known CyberAttacks
+            responses:
+                "200":
+                    description: OK
+    /recentcyberattacks:
+        get:
+            operationId: Get List of Recently added cyberattacks - RansomwareLive
+            summary: Get List of Recently added cyberattacks
+            responses:
+                "200":
+                    description: OK
+    /groupvictims/{group_name}:
+        get:
+            operationId: Get a list of victims by a specific group - RansomwareLive
+            summary: Get a list of victims by a specific group
+            parameters:
+                - in: path
+                  name: group_name
+                  schema:
+                      type: string
+                  required: true
+                  description: The group name to lookup
+            responses:
+                "200":
+                    description: OK
+    /searchvictims/{keyword}:
+        get:
+            operationId: Search a victim by a keyword - RansomwareLive
+            summary: Search a victim by a keyword
+            parameters:
+                - in: path
+                  name: keyword
+                  schema:
+                      type: string
+                  required: true
+                  description: The victim name to lookup
+            responses:
+                "200":
+                    description: OK
+    /countrycyberattacks/{code}:
+        get:
+            operationId: Get a list of cyberattacks by a specific country - RansomwareLive
+            summary: Get a list of cyberattacks by a specific country
+            parameters:
+                - in: path
+                  name: code
+                  schema:
+                      type: string
+                  required: true
+                  description: The country code you would like to lookup for (e.g. US, KW, SA, AE, IN, CA etc...)
+            responses:
+                "200":
+                    description: OK
+    /countryvictims/{code}:
+        get:
+            operationId: Get a list of Victims in a specific country - RansomwareLive
+            summary: Get a list of Victims in a specific country
+            parameters:
+                - in: path
+                  name: code
+                  schema:
+                      type: string
+                  required: true
+                  description: The country code you would like to lookup for (e.g. US, KW, SA, AE, IN, CA etc...)
+            responses:
+                "200":
+                    description: OK
+    /victims/{year}/{month}:
+        get:
+            operationId: Get a list of victims by Year & Month - RansomwareLive
+            summary: Get a list of victims by Year & Month
+            parameters:
+                - in: path
+                  name: year
+                  schema:
+                      type: integer
+                  required: true
+                  description: The year you would like to lookup for (e.g. 2007, 2023, etc...)
+                - in: path
+                  name: month
+                  schema:
+                      type: integer
+                  required: true
+                  description: The month you would like to lookup for (e.g. 01, 10, 12, etc...)
+            responses:
+                "200":
+                    description: OK
