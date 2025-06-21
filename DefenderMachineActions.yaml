@@ -91,7 +91,7 @@ paths:
                     description: OK
     /machineactions:
         get:
-            operationId: Defender XDR - Get Machine Action Details
+            operationId: Defender XDR - Get Machine-Action Details
             description: Get Machine action details which is onboarded on the Microsoft Defender XDR. This skill can be useful to identify Isolation, Un-Isolation and more events from Defender XDR.
             parameters:
                 - in: query
@@ -99,8 +99,8 @@ paths:
                   schema:
                       type: string
                   required: false
-                  example: To get a specific Machine contains(computerDnsName, 'Desktop-Parth'), To get a specific Type type eq 'Isolate'
-                  description: A filter to get your machine. Make sure to format it like following. contains(computerDnsName, 'Desktop-Parth')
+                  example: To get a specific Machine contains(computerDnsName, 'Desktop-Parth'), To get a specific Type type eq Isolate
+                  description: A filter to get your machine. Enter your OData Filter here to filter your data.
             responses:
                 "200":
                     description: OK
