@@ -89,6 +89,21 @@ paths:
             responses:
                 "200":
                     description: OK
+    /machineactions:
+        get:
+            operationId: Defender XDR - Get Machine Action Details
+            description: Get Machine details which is onboarded on the Microsoft Defender XDR.
+            parameters:
+                - in: query
+                  name: $filter
+                  schema:
+                      type: string
+                  required: false
+                  example: To get a specific Machine contains(computerDnsName, 'Desktop-Parth'), To get a specific Type type eq 'Isolate'
+                  description: A filter to get your machine. Make sure to format it like following. contains(computerDnsName, 'Desktop-Parth')
+            responses:
+                "200":
+                    description: OK
     /machines/{id}/restrictCodeExecution:
         post:
             operationId: Defender XDR - Restrict app execution
