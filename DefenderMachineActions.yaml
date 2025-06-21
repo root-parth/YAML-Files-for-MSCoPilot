@@ -92,7 +92,7 @@ paths:
     /machineactions:
         get:
             operationId: Defender XDR - Get Machine Action Details
-            description: Get Machine details which is onboarded on the Microsoft Defender XDR.
+            description: Get Machine action details which is onboarded on the Microsoft Defender XDR. This skill can be useful to identify Isolation, Un-Isolation and more events from Defender XDR.
             parameters:
                 - in: query
                   name: $filter
